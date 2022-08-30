@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { BsFillPersonFill, BsList, BsXLg } from 'react-icons/bs';
 import { TbDoorExit } from 'react-icons/tb';
 import { GiNotebook } from 'react-icons/gi';
+import { IoHome, IoReader } from 'react-icons/io5';
 
 export default function Header() {
     const [isOpenMenu, setIsOpenMenu] = useState(false);
@@ -46,17 +47,41 @@ export default function Header() {
                                 <BsXLg size={20} style={{ color: '#f5f5f5' }} />
                             </button>
                         </div>
-                        <ul className="w-full h-full flex-1 justify-center items-center">
-                            <li className="flex justify-center items-center hover:bg-backgound-hover">
+                        <ul className="w-full h-full flex-1 p-2 justify-center items-center">
+                            <li className="flex justify-start items-center hover:bg-backgound-hover">
                                 <a
                                     className="flex text-letters p-2 hover:font-2xl"
                                     href="/"
                                 >
+                                    <IoHome
+                                        size={20}
+                                        style={{ marginRight: '1.5rem' }}
+                                    />
+                                    Home
+                                </a>
+                            </li>
+                            <li className="flex justify-start items-center transition hover:bg-backgound-hover hover:duration-100">
+                                <a
+                                    className="flex text-letters p-2 hover:font-2xl"
+                                    href="/monthly-values"
+                                >
                                     <GiNotebook
                                         size={20}
-                                        style={{ marginRight: '0.5rem' }}
+                                        style={{ marginRight: '1.5rem' }}
                                     />
                                     Valores
+                                </a>
+                            </li>
+                            <li className="flex justify-start items-center hover:bg-backgound-hover">
+                                <a
+                                    className="flex text-letters p-2 hover:font-2xl"
+                                    href="/monthly-reports"
+                                >
+                                    <IoReader
+                                        size={20}
+                                        style={{ marginRight: '1.5rem' }}
+                                    />
+                                    Relatórios mensais
                                 </a>
                             </li>
                         </ul>
