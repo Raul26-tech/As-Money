@@ -33,7 +33,7 @@ export default function Header() {
                     ${!isOpenMenu ? '-translate-x-full' : null} 
                     transition 
                     ease-in-out
-                    duration-500 
+                    duration-300 
                     shadow-2xl
                     z-50
                     bg-ThemeBg

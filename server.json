@@ -1,0 +1,32 @@
+{
+    "monthly-values": [
+        {
+            "id": 1,
+            "title": "Gastos Mensais",
+            "open-value": 258.98,
+            "close-value": 0
+        }
+    ],
+    "monthly-reports": [
+        {
+            "id": 1,
+            "title": "Gastos Mensais",
+            "open-value": 258.98,
+            "close-value": 0
+        },
+        {
+            "id": 1,
+            "title": "gasolina carro",
+            "open-value": 258.98,
+            "close-value": 25.65
+        }
+    ],
+    "transactions": [
+        {
+            "id": 1,
+            "code": "01",
+            "title-transaction": "Valor da passagem",
+            "type": "prohibited"
+        }
+    ]
+}
