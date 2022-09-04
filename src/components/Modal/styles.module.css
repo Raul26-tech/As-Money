@@ -1,0 +1,23 @@
+.container {
+    width: 100vw;
+    height: 100vh;
+
+    z-index: 11;
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    opacity: 0.5;
+    animation: alooo 0.2s ease-in;
+    background-color: black;
+}
+
+.modal {
+    z-index: 12;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: fit-content;
+    height: fit-content;
+    transform: translateX(-50%) translateY(-50%);
+}

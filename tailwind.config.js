@@ -11,6 +11,7 @@ module.exports = {
                 'btn-transaction-hover': '#4246af',
                 'btn-close-hover': '#0684df',
                 'backgound-hover': '#0684df',
+                'background-overlay': 'rgba(0,0,0,0.5)',
             },
         },
     },
