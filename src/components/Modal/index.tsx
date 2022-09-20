@@ -14,7 +14,7 @@ export default function Modal({ onCloseModal, title, children }: IModalProps) {
         <>
             <div className={styles.container} />
             <div className={styles.modal}>
-                <div className="w-[20rem] h-[20rem] md:w-[35rem] md:h-[35rem] py-5 px-8 rounded-md bg-white flex flex-col relative m-5">
+                <div className="w-[20rem] h-[20rem] md:w-[35rem] md:h-[35rem] py-5 px-8 rounded-md bg-slate-200 flex flex-col relative m-5">
                     <>
                         {onCloseModal && (
                             <button

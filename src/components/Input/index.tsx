@@ -14,8 +14,10 @@ interface IInputProps extends InputHTMLAttributes<HTMLInputElement> {
 const InputMain: ForwardRefRenderFunction<HTMLInputElement, IInputProps> = ({
     label,
     type = 'text',
-    className = `font-normal
-    h-9
+    className = `
+    bg-input-color
+    font-normal
+    h-12
     border
     border-solid
     rounded-md
@@ -27,7 +29,8 @@ const InputMain: ForwardRefRenderFunction<HTMLInputElement, IInputProps> = ({
     appearance-none
     focus:outline-none
     shadow-md
-    focus:shadow-lg`,
+    focus:shadow-lg
+    `,
     addClassName = '',
 }) => {
     return (

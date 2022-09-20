@@ -25,7 +25,8 @@
         {
             "id": 1,
             "code": "01",
-            "title-transaction": "Valor da passagem",
+            "name-transaction": "Valor da passagem",
+            "price": 2.5,
             "type": "prohibited"
         }
     ]

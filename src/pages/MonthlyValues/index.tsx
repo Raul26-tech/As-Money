@@ -1,7 +1,16 @@
 import { useState } from 'react';
+import { useForm } from 'react-hook-form';
 import { AiOutlinePlus } from 'react-icons/ai';
 import { Input } from '../../components/Input';
 import Modal from '../../components/Modal';
+
+interface IFormTransactionProps {
+    id: string;
+    code: string;
+    name: string;
+    type: 'prohibited' | 'close';
+    price: number;
+}
 
 export default function MonthlyVAlues() {
     const [isOpen, setIsOpen] = useState(false);
@@ -9,6 +18,16 @@ export default function MonthlyVAlues() {
     const handleOpenModal = () => {
         setIsOpen(!isOpen);
     };
+
+    const { register, handleSubmit, formState } = useForm({
+        defaultValues: {
+            id: '',
+            code: '',
+            name: '',
+            type: '',
+            price: '',
+        },
+    });
 
     return (
         <>
@@ -30,7 +49,12 @@ export default function MonthlyVAlues() {
             </div>
             {isOpen && (
                 <Modal title="Nova transação" onCloseModal={handleOpenModal}>
-                    <Input label="Código da transação" type="text" />
+                    <form
+                        onSubmit={() => console.log('Enviando dados')}
+                        className="flex w-full md:gap-x-5 gap-y-2 pb-3"
+                    >
+                        <Input label="Nome" {...register('name')} type="text" />
+                    </form>
                 </Modal>
             )}
         </>
