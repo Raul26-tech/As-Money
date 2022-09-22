@@ -24,7 +24,6 @@
     "transactions": [
         {
             "id": 1,
-            "code": "01",
             "name-transaction": "Valor da passagem",
             "price": 2.5,
             "type": "prohibited"

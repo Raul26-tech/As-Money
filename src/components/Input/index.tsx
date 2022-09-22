@@ -3,15 +3,18 @@ import {
     ForwardRefRenderFunction,
     InputHTMLAttributes,
 } from 'react';
+import { FieldError } from 'react-hook-form';
 
 interface IInputProps extends InputHTMLAttributes<HTMLInputElement> {
+    error?: FieldError;
     label?: string;
-    type: string;
+    type?: string;
     className?: string;
     addClassName?: string;
 }
 
 const InputMain: ForwardRefRenderFunction<HTMLInputElement, IInputProps> = ({
+    error = null,
     label,
     type = 'text',
     className = `
@@ -39,6 +42,9 @@ const InputMain: ForwardRefRenderFunction<HTMLInputElement, IInputProps> = ({
                 <span className="block text-xs mb-1 font-medium">{label}</span>
             )}
             <input className={`${className}, ${addClassName}`} type={type} />
+            {error?.message ? (
+                <span className="text-red-500 text-xs">{error.message}</span>
+            ) : null}
         </label>
     );
 };

@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { AiOutlinePlus } from 'react-icons/ai';
+import { Checkbox } from '../../components/Checkbox';
+import CheckboxContainer from '../../components/Checkbox/Components';
 import { Input } from '../../components/Input';
 import Modal from '../../components/Modal';
 
@@ -51,9 +53,34 @@ export default function MonthlyVAlues() {
                 <Modal title="Nova transação" onCloseModal={handleOpenModal}>
                     <form
                         onSubmit={() => console.log('Enviando dados')}
-                        className="flex w-full md:gap-x-5 gap-y-2 pb-3"
+                        className="flex flex-col w-full gap-x-3 md:gap-x-5 gap-y-2 pb-3"
                     >
-                        <Input label="Nome" {...register('name')} type="text" />
+                        <Input
+                            label="Nome"
+                            error={formState.errors.name}
+                            {...register('name')}
+                            type="text"
+                            autoFocus
+                        />
+                        <Input
+                            label="Preço"
+                            error={formState.errors.price}
+                            {...register('name')}
+                            type="number"
+                        />
+
+                        <CheckboxContainer label="Será uma">
+                            <Checkbox
+                                label="Entrada"
+                                error={formState.errors.type}
+                                {...register('type')}
+                            />
+                            <Checkbox
+                                label="Saída"
+                                error={formState.errors.type}
+                                {...register('type')}
+                            />
+                        </CheckboxContainer>
                     </form>
                 </Modal>
             )}
