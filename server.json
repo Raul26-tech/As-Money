@@ -1,32 +1,116 @@
 {
-    "monthly-values": [
-        {
-            "id": 1,
-            "title": "Gastos Mensais",
-            "open-value": 258.98,
-            "close-value": 0
-        }
+  "monthly-values": [
+    {
+      "id": 1,
+      "title": "Gastos Mensais",
+      "open-value": 258.98,
+      "close-value": 0
+    }
+  ],
+  "monthly-reports": [
+    {
+      "id": 1,
+      "title": "Gastos Mensais",
+      "open-value": 258.98,
+      "close-value": 0
+    },
+    {
+      "id": 1,
+      "title": "gasolina carro",
+      "open-value": 258.98,
+      "close-value": 25.65
+    }
+  ],
+  "transactions": [
+    {
+      "id": 1,
+      "name-transaction": "Valor da passagem",
+      "price": 2.5,
+      "prohibited": true,
+      "closed": false
+    },
+    {
+      "id": 2
+    },
+    {
+      "id": 3
+    },
+    {
+      "id": 4
+    },
+    {
+      "id": 5
+    },
+    {
+      "id": 6,
+      "code": "",
+      "name": "",
+      "type": true,
+      "price": 0
+    },
+    {
+      "id": 7,
+      "code": "",
+      "name": "",
+      "type": true,
+      "price": 0,
+      "prohibited": true,
+      "closed": false
+    },
+    [
+      "code",
+      "name",
+      "prohibited",
+      "closed",
+      "price"
     ],
-    "monthly-reports": [
-        {
-            "id": 1,
-            "title": "Gastos Mensais",
-            "open-value": 258.98,
-            "close-value": 0
-        },
-        {
-            "id": 1,
-            "title": "gasolina carro",
-            "open-value": 258.98,
-            "close-value": 25.65
-        }
-    ],
-    "transactions": [
-        {
-            "id": 1,
-            "code": "01",
-            "title-transaction": "Valor da passagem",
-            "type": "prohibited"
-        }
-    ]
+    {
+      "id": 9,
+      "code": "",
+      "name": "",
+      "prohibited": true,
+      "closed": false,
+      "price": 0
+    },
+    {
+      "id": 10,
+      "code": "",
+      "name": "",
+      "prohibited": false,
+      "closed": true,
+      "price": 0
+    },
+    {
+      "id": 11,
+      "code": "",
+      "name": "",
+      "prohibited": false,
+      "closed": true,
+      "price": 0
+    },
+    {
+      "id": 12,
+      "code": "",
+      "name": "",
+      "prohibited": true,
+      "closed": false,
+      "price": 0
+    },
+    {
+      "id": 13,
+      "code": "",
+      "name": "",
+      "prohibited": true,
+      "closed": false,
+      "price": 0
+    },
+    {
+      "id": 14,
+      "code": "",
+      "name": "",
+      "prohibited": false,
+      "closed": true,
+      "price": 0
+    }
+  ]
 }
