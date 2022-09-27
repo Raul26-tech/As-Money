@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import * as yup from 'yup';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -8,6 +8,7 @@ import CheckboxContainer from '../../components/Checkbox/Components';
 import { Input } from '../../components/Input';
 import Modal from '../../components/Modal';
 import { api } from '../../Services/api';
+import ShowNotificationMessage from '../../utils/notification';
 
 const schema = yup
     .object({
@@ -30,6 +31,7 @@ interface IFormTransactionProps {
 
 export default function MonthlyVAlues() {
     const [isOpen, setIsOpen] = useState(false);
+    const [transactions, setTransactions] = useState();
 
     const handleOpenModal = () => {
         setIsOpen(!isOpen);
@@ -41,11 +43,17 @@ export default function MonthlyVAlues() {
         try {
             await api
                 .post<IFormTransactionProps>('/transactions', data)
-                .then((response) => {
-                    console.log(response.data);
+                .then(() => {
+                    ShowNotificationMessage({
+                        message: 'Inclusão feita com sucesso!',
+                        type: 'success',
+                    });
                 });
-        } catch {
-            console.log('Deu errado');
+        } catch (error: any) {
+            ShowNotificationMessage({
+                message: error.response.data.messsage,
+                type: 'error',
+            });
         }
     };
 
@@ -60,6 +68,14 @@ export default function MonthlyVAlues() {
             price: 0,
         } as IFormTransactionProps,
     });
+
+    //Carregando histórico de transações
+    useEffect(() => {
+        api.get('/transactions').then(() => {
+            console.log(transactions);
+            setTransactions(transactions);
+        });
+    }, [transactions]);
 
     return (
         <>
