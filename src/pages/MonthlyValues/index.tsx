@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { TransitionStartFunction, useEffect, useState } from 'react';
 import * as yup from 'yup';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -10,13 +10,13 @@ import Modal from '../../components/Modal';
 import { api } from '../../Services/api';
 import ShowNotificationMessage from '../../utils/notification';
 
-const schema = yup
-    .object({
-        code: yup.string().required('Código é obrigatório'),
-        name: yup.string().required('Nome da transação é obrigátorio'),
-        price: yup.string().required('Preço é obrigatório'),
-    })
-    .required();
+// const schema = yup
+//     .object({
+//         code: yup.string().required('Código é obrigatório'),
+//         name: yup.string().required('Nome da transação é obrigátorio'),
+//         price: yup.string().required('Preço é obrigatório'),
+//     })
+//     .required();
 
 const fields = ['code', 'name', 'prohibited', 'closed', 'price'];
 
@@ -31,24 +31,39 @@ interface IFormTransactionProps {
 
 export default function MonthlyVAlues() {
     const [isOpen, setIsOpen] = useState(false);
-    const [transactions, setTransactions] = useState();
+    const [transactions, setTransactions] = useState<IFormTransactionProps[]>(
+        []
+    );
 
     const handleOpenModal = () => {
         setIsOpen(!isOpen);
     };
 
-    const handleSave: SubmitHandler<IFormTransactionProps> = async (
-        data: IFormTransactionProps
-    ) => {
+    const { register, handleSubmit, formState } =
+        useForm<IFormTransactionProps>({
+            // resolver: yupResolver(schema),
+            defaultValues: {
+                id: '',
+                code: '',
+                name: '',
+                prohibited: true,
+                closed: false,
+                price: 0,
+            } as IFormTransactionProps,
+        });
+
+    const handleSave: SubmitHandler<IFormTransactionProps> = async (data) => {
         try {
             await api
                 .post<IFormTransactionProps>('/transactions', data)
-                .then(() => {
+                .then((response) => {
+                    console.log(response.data);
                     ShowNotificationMessage({
                         message: 'Inclusão feita com sucesso!',
                         type: 'success',
                     });
                 });
+            setIsOpen(false);
         } catch (error: any) {
             ShowNotificationMessage({
                 message: error.response.data.messsage,
@@ -57,22 +72,10 @@ export default function MonthlyVAlues() {
         }
     };
 
-    const { register, handleSubmit, formState } = useForm({
-        resolver: yupResolver(schema),
-        defaultValues: {
-            id: '',
-            code: '',
-            name: '',
-            prohibited: true,
-            closed: false,
-            price: 0,
-        } as IFormTransactionProps,
-    });
-
     //Carregando histórico de transações
     useEffect(() => {
-        api.get('/transactions').then(() => {
-            console.log(transactions);
+        api.get<IFormTransactionProps[]>('/transactions').then((response) => {
+            console.log(response.data);
             setTransactions(transactions);
         });
     }, [transactions]);
@@ -95,6 +98,17 @@ export default function MonthlyVAlues() {
                     </button>
                 </div>
             </div>
+            {transactions.map(
+                ({ code, name, price, id }: IFormTransactionProps) => (
+                    <div className=" flex flex-col w-full bg-red-300">
+                        <div key={id} className="w-full bg-blue-400">
+                            <span>{code}</span>
+                            <h3>{name}</h3>
+                            <span>{price}</span>
+                        </div>
+                    </div>
+                )
+            )}
             {isOpen && (
                 <Modal title="Nova transação" onCloseModal={handleOpenModal}>
                     <form
@@ -109,7 +123,7 @@ export default function MonthlyVAlues() {
                             autoFocus
                         />
                         <Input
-                            label="Nome"
+                            label="Descrição"
                             {...register('name')}
                             error={formState.errors.name}
                             type="text"
@@ -120,7 +134,6 @@ export default function MonthlyVAlues() {
                             error={formState.errors.price}
                             type="number"
                         />
-
                         <CheckboxContainer label="Será uma">
                             <Checkbox
                                 label="Entrada"

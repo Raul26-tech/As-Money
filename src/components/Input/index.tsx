@@ -18,10 +18,11 @@ const InputMain: ForwardRefRenderFunction<HTMLInputElement, IInputProps> = (
         error = null,
         label,
         type = 'text',
+        addClassName = '',
         className = `
     bg-input-color
     font-normal
-    h-12
+    h-9
     border
     border-solid
     rounded-md
@@ -35,7 +36,6 @@ const InputMain: ForwardRefRenderFunction<HTMLInputElement, IInputProps> = (
     shadow-md
     focus:shadow-lg
     `,
-        addClassName = '',
     },
     ref
 ) => {

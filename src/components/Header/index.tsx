@@ -69,7 +69,7 @@ export default function Header() {
                                         size={20}
                                         style={{ marginRight: '1.5rem' }}
                                     />
-                                    Valores
+                                    Transações
                                 </a>
                             </li>
                             <li className="flex justify-start items-center hover:bg-backgound-hover">

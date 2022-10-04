@@ -1,7 +1,8 @@
+import { ReactNode } from 'react';
 import { toast } from 'react-toastify';
 
 interface INotification {
-    message?: string;
+    message?: string | ReactNode;
     type?: 'success' | 'info' | 'warning' | 'error';
     position?:
         | 'top-right'
