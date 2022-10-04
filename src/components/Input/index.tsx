@@ -13,14 +13,16 @@ interface IInputProps extends InputHTMLAttributes<HTMLInputElement> {
     addClassName?: string;
 }
 
-const InputMain: ForwardRefRenderFunction<HTMLInputElement, IInputProps> = ({
-    error = null,
-    label,
-    type = 'text',
-    className = `
+const InputMain: ForwardRefRenderFunction<HTMLInputElement, IInputProps> = (
+    {
+        error = null,
+        label,
+        type = 'text',
+        addClassName = '',
+        className = `
     bg-input-color
     font-normal
-    h-12
+    h-9
     border
     border-solid
     rounded-md
@@ -34,14 +36,19 @@ const InputMain: ForwardRefRenderFunction<HTMLInputElement, IInputProps> = ({
     shadow-md
     focus:shadow-lg
     `,
-    addClassName = '',
-}) => {
+    },
+    ref
+) => {
     return (
         <label className="w-full">
             {label && (
                 <span className="block text-xs mb-1 font-medium">{label}</span>
             )}
-            <input className={`${className}, ${addClassName}`} type={type} />
+            <input
+                className={`${className}, ${addClassName}`}
+                type={type}
+                ref={ref}
+            />
             {error?.message ? (
                 <span className="text-red-500 text-xs">{error.message}</span>
             ) : null}
