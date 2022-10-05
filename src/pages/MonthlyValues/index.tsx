@@ -1,14 +1,14 @@
 import { useCallback, useEffect, useState } from 'react';
 import * as yup from 'yup';
-import { SubmitHandler, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { AiOutlinePlus } from 'react-icons/ai';
+import { SubmitHandler, useForm } from 'react-hook-form';
 import { Checkbox } from '../../components/Checkbox';
 import CheckboxContainer from '../../components/Checkbox/Components';
 import { Input } from '../../components/Input';
 import Modal from '../../components/Modal';
 import { api } from '../../Services/api';
-import ShowNotificationMessage from '../../utils/notification';
+import Swal from 'sweetalert2';
+import { AiOutlinePlus } from 'react-icons/ai';
 
 // const schema = yup
 //     .object({
@@ -17,8 +17,6 @@ import ShowNotificationMessage from '../../utils/notification';
 //         price: yup.string().required('Preço é obrigatório'),
 //     })
 //     .required();
-
-const fields = ['code', 'name', 'prohibited', 'closed', 'price'];
 
 interface IFormTransactionProps {
     id: string;
@@ -43,7 +41,6 @@ export default function MonthlyVAlues() {
         useForm<IFormTransactionProps>({
             // resolver: yupResolver(schema),
             defaultValues: {
-                id: '',
                 code: '',
                 name: '',
                 prohibited: true,
@@ -52,28 +49,27 @@ export default function MonthlyVAlues() {
             } as IFormTransactionProps,
         });
 
-    // const handleSave: SubmitHandler<IFormTransactionProps> = async (data) => {
-    //     try {
-    //         await api
-    //             .post<IFormTransactionProps>('/transactions', data)
-    //             .then((response) => {
-    //                 console.log(response.data);
-    //             });
-    //         setIsOpen(false);
-    //     } catch (error: any) {
-    //         alert(error);
-    //     }
-    // };
-
     const handleSave: SubmitHandler<IFormTransactionProps> = useCallback(
         async (data) => {
             try {
-                await api.post('/transactions', data).then((response) => {
-                    console.log(response.data);
+                await api.post('/transactions', data).then(() => {
+                    Swal.fire({
+                        title: 'Sucesso!',
+                        text: 'Inserção feita com sucesso',
+                        icon: 'success',
+                        confirmButtonText: 'Ok',
+                        width: '24em',
+                    });
+                    setIsOpen(false);
                 });
-                alert('Deu certo! ');
-            } catch {
-                alert('Erro');
+            } catch (error: any) {
+                Swal.fire({
+                    title: 'Erro!',
+                    text: error.response.data.message,
+                    icon: 'success',
+                    confirmButtonText: 'Ok',
+                });
+                setIsOpen(false);
             }
         },
         []
