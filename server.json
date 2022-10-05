@@ -255,6 +255,54 @@
       "prohibited": true,
       "closed": false,
       "price": 0
+    },
+    {
+      "id": 32,
+      "code": "",
+      "name": "",
+      "prohibited": true,
+      "closed": false,
+      "price": 0
+    },
+    {
+      "id": 33,
+      "code": "",
+      "name": "",
+      "prohibited": true,
+      "closed": false,
+      "price": 0
+    },
+    {
+      "id": 34,
+      "code": "",
+      "name": "",
+      "prohibited": true,
+      "closed": false,
+      "price": 0
+    },
+    {
+      "id": 35,
+      "code": "00021",
+      "name": "",
+      "prohibited": true,
+      "closed": false,
+      "price": 0
+    },
+    {
+      "id": 36,
+      "code": "0002",
+      "name": "Testando inclusão",
+      "prohibited": true,
+      "closed": false,
+      "price": "250"
+    },
+    {
+      "id": 37,
+      "code": "0003",
+      "name": "Saída para Jd.Nova Cotia",
+      "prohibited": false,
+      "closed": true,
+      "price": "50"
     }
   ]
 }

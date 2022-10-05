@@ -36,6 +36,7 @@ const InputMain: ForwardRefRenderFunction<HTMLInputElement, IInputProps> = (
     shadow-md
     focus:shadow-lg
     `,
+        ...rest
     },
     ref
 ) => {
@@ -45,6 +46,7 @@ const InputMain: ForwardRefRenderFunction<HTMLInputElement, IInputProps> = (
                 <span className="block text-xs mb-1 font-medium">{label}</span>
             )}
             <input
+                {...rest}
                 className={`${className}, ${addClassName}`}
                 type={type}
                 ref={ref}
