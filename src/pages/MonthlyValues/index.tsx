@@ -1,4 +1,4 @@
-import { TransitionStartFunction, useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import * as yup from 'yup';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -52,25 +52,32 @@ export default function MonthlyVAlues() {
             } as IFormTransactionProps,
         });
 
-    const handleSave: SubmitHandler<IFormTransactionProps> = async (data) => {
-        try {
-            await api
-                .post<IFormTransactionProps>('/transactions', data)
-                .then((response) => {
+    // const handleSave: SubmitHandler<IFormTransactionProps> = async (data) => {
+    //     try {
+    //         await api
+    //             .post<IFormTransactionProps>('/transactions', data)
+    //             .then((response) => {
+    //                 console.log(response.data);
+    //             });
+    //         setIsOpen(false);
+    //     } catch (error: any) {
+    //         alert(error);
+    //     }
+    // };
+
+    const handleSave: SubmitHandler<IFormTransactionProps> = useCallback(
+        async (data) => {
+            try {
+                await api.post('/transactions', data).then((response) => {
                     console.log(response.data);
-                    ShowNotificationMessage({
-                        message: 'Inclusão feita com sucesso!',
-                        type: 'success',
-                    });
                 });
-            setIsOpen(false);
-        } catch (error: any) {
-            ShowNotificationMessage({
-                message: error.response.data.messsage,
-                type: 'error',
-            });
-        }
-    };
+                alert('Deu certo! ');
+            } catch {
+                alert('Erro');
+            }
+        },
+        []
+    );
 
     //Carregando histórico de transações
     useEffect(() => {
@@ -98,7 +105,7 @@ export default function MonthlyVAlues() {
                     </button>
                 </div>
             </div>
-            {transactions.map(
+            {/* {transactions.map(
                 ({ code, name, price, id }: IFormTransactionProps) => (
                     <div className=" flex flex-col w-full bg-red-300">
                         <div key={id} className="w-full bg-blue-400">
@@ -108,7 +115,7 @@ export default function MonthlyVAlues() {
                         </div>
                     </div>
                 )
-            )}
+            )} */}
             {isOpen && (
                 <Modal title="Nova transação" onCloseModal={handleOpenModal}>
                     <form
