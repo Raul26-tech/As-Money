@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useState } from 'react';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { SubmitHandler, useForm } from 'react-hook-form';
@@ -9,6 +9,7 @@ import Modal from '../../components/Modal';
 import { api } from '../../Services/api';
 import Swal from 'sweetalert2';
 import { AiOutlinePlus } from 'react-icons/ai';
+import Transactions from '../../components/Transactions';
 
 // const schema = yup
 //     .object({
@@ -21,7 +22,7 @@ import { AiOutlinePlus } from 'react-icons/ai';
 interface IFormTransactionProps {
     id: string;
     code: string;
-    name: string;
+    description: string;
     price: number;
     prohibited: boolean;
     closed: boolean;
@@ -29,9 +30,6 @@ interface IFormTransactionProps {
 
 export default function MonthlyVAlues() {
     const [isOpen, setIsOpen] = useState(false);
-    const [transactions, setTransactions] = useState<IFormTransactionProps[]>(
-        []
-    );
 
     const handleOpenModal = () => {
         setIsOpen(!isOpen);
@@ -42,46 +40,35 @@ export default function MonthlyVAlues() {
             // resolver: yupResolver(schema),
             defaultValues: {
                 code: '',
-                name: '',
+                description: '',
                 prohibited: true,
                 closed: false,
                 price: 0,
             } as IFormTransactionProps,
         });
 
-    const handleSave: SubmitHandler<IFormTransactionProps> = useCallback(
-        async (data) => {
-            try {
-                await api.post('/transactions', data).then(() => {
-                    Swal.fire({
-                        title: 'Sucesso!',
-                        text: 'Inserção feita com sucesso',
-                        icon: 'success',
-                        confirmButtonText: 'Ok',
-                        width: '24em',
-                    });
-                    setIsOpen(false);
-                });
-            } catch (error: any) {
+    const handleSave: SubmitHandler<IFormTransactionProps> = async (data) => {
+        try {
+            await api.post('/transactions', data).then((response) => {
                 Swal.fire({
-                    title: 'Erro!',
-                    text: error.response.data.message,
+                    title: 'Sucesso!',
+                    text: 'Inserção feita com sucesso',
                     icon: 'success',
                     confirmButtonText: 'Ok',
+                    width: '24em',
                 });
                 setIsOpen(false);
-            }
-        },
-        []
-    );
-
-    //Carregando histórico de transações
-    useEffect(() => {
-        api.get<IFormTransactionProps[]>('/transactions').then((response) => {
-            console.log(response.data);
-            setTransactions(transactions);
-        });
-    }, [transactions]);
+            });
+        } catch (error: any) {
+            Swal.fire({
+                title: 'Erro!',
+                text: error.response.data.message,
+                icon: 'success',
+                confirmButtonText: 'Ok',
+            });
+            setIsOpen(false);
+        }
+    };
 
     return (
         <>
@@ -101,17 +88,7 @@ export default function MonthlyVAlues() {
                     </button>
                 </div>
             </div>
-            {/* {transactions.map(
-                ({ code, name, price, id }: IFormTransactionProps) => (
-                    <div className=" flex flex-col w-full bg-red-300">
-                        <div key={id} className="w-full bg-blue-400">
-                            <span>{code}</span>
-                            <h3>{name}</h3>
-                            <span>{price}</span>
-                        </div>
-                    </div>
-                )
-            )} */}
+            <Transactions />
             {isOpen && (
                 <Modal title="Nova transação" onCloseModal={handleOpenModal}>
                     <form
@@ -127,8 +104,8 @@ export default function MonthlyVAlues() {
                         />
                         <Input
                             label="Descrição"
-                            {...register('name')}
-                            error={formState.errors.name}
+                            {...register('description')}
+                            error={formState.errors.description}
                             type="text"
                         />
                         <Input
