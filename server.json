@@ -24,285 +24,70 @@
   "transactions": [
     {
       "id": 1,
-      "name-transaction": "Valor da passagem",
+      "code": "001",
+      "description": "Valor da passagem",
       "price": 2.5,
       "prohibited": true,
       "closed": false
     },
     {
-      "id": 2
+      "code": "00052",
+      "name": "Testando botão",
+      "prohibited": true,
+      "closed": false,
+      "price": "520",
+      "id": 55
     },
     {
-      "id": 3
-    },
-    {
-      "id": 4
-    },
-    {
-      "id": 5
-    },
-    {
-      "id": 6,
-      "code": "",
+      "code": "01",
       "name": "",
-      "type": true,
-      "price": 0
+      "prohibited": true,
+      "closed": false,
+      "price": "250",
+      "description": "Teste",
+      "id": 56
     },
     {
-      "id": 7,
-      "code": "",
+      "code": "02",
       "name": "",
-      "type": true,
+      "prohibited": true,
+      "closed": false,
+      "price": "250",
+      "description": "Teste 2",
+      "id": 57
+    },
+    {
+      "code": "02",
+      "name": "",
+      "prohibited": true,
+      "closed": false,
+      "price": "250",
+      "description": "Teste 2",
+      "id": 58
+    },
+    {
+      "code": "023",
+      "description": "Teste",
+      "prohibited": true,
+      "closed": false,
+      "price": "250",
+      "id": 59
+    },
+    {
+      "code": "",
+      "description": "",
+      "prohibited": true,
+      "closed": false,
       "price": 0,
-      "prohibited": true,
-      "closed": false
-    },
-    [
-      "code",
-      "name",
-      "prohibited",
-      "closed",
-      "price"
-    ],
-    {
-      "id": 9,
-      "code": "",
-      "name": "",
-      "prohibited": true,
-      "closed": false,
-      "price": 0
+      "id": 60
     },
     {
-      "id": 10,
-      "code": "",
-      "name": "",
+      "code": "012",
+      "description": "Saída",
       "prohibited": false,
       "closed": true,
-      "price": 0
-    },
-    {
-      "id": 11,
-      "code": "",
-      "name": "",
-      "prohibited": false,
-      "closed": true,
-      "price": 0
-    },
-    {
-      "id": 12,
-      "code": "",
-      "name": "",
-      "prohibited": true,
-      "closed": false,
-      "price": 0
-    },
-    {
-      "id": 13,
-      "code": "",
-      "name": "",
-      "prohibited": true,
-      "closed": false,
-      "price": 0
-    },
-    {
-      "id": 14,
-      "code": "",
-      "name": "",
-      "prohibited": false,
-      "closed": true,
-      "price": 0
-    },
-    {
-      "id": 15,
-      "code": "",
-      "name": "",
-      "prohibited": true,
-      "closed": false,
-      "price": 0
-    },
-    {
-      "id": 16,
-      "code": "",
-      "name": "",
-      "prohibited": true,
-      "closed": false,
-      "price": 0
-    },
-    {
-      "id": 17,
-      "code": "",
-      "name": "",
-      "prohibited": true,
-      "closed": false,
-      "price": 0
-    },
-    {
-      "id": 18,
-      "code": "",
-      "name": "",
-      "prohibited": true,
-      "closed": false,
-      "price": 0
-    },
-    {
-      "id": 19,
-      "code": "",
-      "name": "",
-      "prohibited": true,
-      "closed": false,
-      "price": 0
-    },
-    [
-      "code",
-      "name",
-      "prohibited",
-      "closed",
-      "price"
-    ],
-    {
-      "id": 21,
-      "code": "",
-      "name": "",
-      "prohibited": true,
-      "closed": false,
-      "price": 0
-    },
-    {
-      "data": {
-        "id": "",
-        "code": "",
-        "name": "",
-        "prohibited": false,
-        "closed": true,
-        "price": 0
-      },
-      "id": 22
-    },
-    {
-      "data": {
-        "id": "",
-        "code": "",
-        "name": "",
-        "prohibited": false,
-        "closed": true,
-        "price": 0
-      },
-      "id": 23
-    },
-    {
-      "data": {
-        "id": "",
-        "code": "",
-        "name": "",
-        "prohibited": true,
-        "closed": false,
-        "price": 0
-      },
-      "id": 24
-    },
-    {
-      "id": 25,
-      "code": "",
-      "name": "",
-      "prohibited": true,
-      "closed": false,
-      "price": 0
-    },
-    {
-      "id": 26,
-      "code": "",
-      "name": "",
-      "prohibited": true,
-      "closed": false,
-      "price": 0
-    },
-    {
-      "id": 27,
-      "code": "",
-      "name": "",
-      "prohibited": true,
-      "closed": false,
-      "price": 0
-    },
-    {
-      "id": 28,
-      "code": "",
-      "name": "",
-      "prohibited": true,
-      "closed": false,
-      "price": 0
-    },
-    {
-      "id": 29,
-      "code": "",
-      "name": "",
-      "prohibited": true,
-      "closed": false,
-      "price": 0
-    },
-    {
-      "id": 30,
-      "code": "",
-      "name": "",
-      "prohibited": true,
-      "closed": false,
-      "price": 0
-    },
-    {
-      "id": 31,
-      "code": "",
-      "name": "",
-      "prohibited": true,
-      "closed": false,
-      "price": 0
-    },
-    {
-      "id": 32,
-      "code": "",
-      "name": "",
-      "prohibited": true,
-      "closed": false,
-      "price": 0
-    },
-    {
-      "id": 33,
-      "code": "",
-      "name": "",
-      "prohibited": true,
-      "closed": false,
-      "price": 0
-    },
-    {
-      "id": 34,
-      "code": "",
-      "name": "",
-      "prohibited": true,
-      "closed": false,
-      "price": 0
-    },
-    {
-      "id": 35,
-      "code": "00021",
-      "name": "",
-      "prohibited": true,
-      "closed": false,
-      "price": 0
-    },
-    {
-      "id": 36,
-      "code": "0002",
-      "name": "Testando inclusão",
-      "prohibited": true,
-      "closed": false,
-      "price": "250"
-    },
-    {
-      "id": 37,
-      "code": "0003",
-      "name": "Saída para Jd.Nova Cotia",
-      "prohibited": false,
-      "closed": true,
-      "price": "50"
+      "price": "650",
+      "id": 61
     }
   ]
 }
