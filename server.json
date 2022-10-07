@@ -1,12 +1,4 @@
 {
-  "monthly-values": [
-    {
-      "id": 1,
-      "title": "Gastos Mensais",
-      "open-value": 258.98,
-      "close-value": 0
-    }
-  ],
   "monthly-reports": [
     {
       "id": 1,
@@ -25,69 +17,57 @@
     {
       "id": 1,
       "code": "001",
-      "description": "Valor da passagem",
+      "title": "Valor do Uber",
+      "description": "Foram gastos 134.52",
       "price": 2.5,
-      "prohibited": true,
-      "closed": false
+      "status": {
+        "prohibited": true,
+        "closed": false
+      }
     },
     {
-      "code": "00052",
-      "name": "Testando botão",
-      "prohibited": true,
-      "closed": false,
-      "price": "520",
-      "id": 55
+      "code": "002",
+      "description": "Foram comprados os produtos que faltavam",
+      "status": {
+        "prohibited": false,
+        "closed": true
+      },
+      "price": "45",
+      "title": "Cantina do pastel",
+      "id": 2
     },
     {
-      "code": "01",
-      "name": "",
-      "prohibited": true,
-      "closed": false,
-      "price": "250",
-      "description": "Teste",
-      "id": 56
+      "code": "004",
+      "description": "teste",
+      "status": {
+        "prohibited": false,
+        "closed": true
+      },
+      "price": "45",
+      "title": "Testando inclusão dos valores",
+      "id": 3
     },
     {
-      "code": "02",
-      "name": "",
-      "prohibited": true,
-      "closed": false,
-      "price": "250",
-      "description": "Teste 2",
-      "id": 57
+      "code": "007",
+      "description": "teste...",
+      "status": {
+        "prohibited": true,
+        "closed": false
+      },
+      "price": "50",
+      "title": "Inclusão",
+      "id": 4
     },
     {
-      "code": "02",
-      "name": "",
-      "prohibited": true,
-      "closed": false,
-      "price": "250",
-      "description": "Teste 2",
-      "id": 58
-    },
-    {
-      "code": "023",
-      "description": "Teste",
-      "prohibited": true,
-      "closed": false,
-      "price": "250",
-      "id": 59
-    },
-    {
-      "code": "",
-      "description": "",
-      "prohibited": true,
-      "closed": false,
-      "price": 0,
-      "id": 60
-    },
-    {
-      "code": "012",
-      "description": "Saída",
-      "prohibited": false,
-      "closed": true,
-      "price": "650",
-      "id": 61
+      "code": "007",
+      "description": "teste...",
+      "status": {
+        "prohibited": true,
+        "closed": false
+      },
+      "price": "50",
+      "title": "Inclusão",
+      "id": 5
     }
   ]
 }

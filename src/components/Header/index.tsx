@@ -16,7 +16,7 @@ export default function Header() {
     };
 
     return (
-        <header className="flex w-full h-[5rem] justify-between p-7 items-center shadow-2xl bg-ThemeBg">
+        <header className="flex w-full h-[5rem] justify-between p-7 fixed items-center shadow-2xl bg-ThemeBg">
             <button onClick={handleOPenMenu}>
                 <BsList size={24} style={{ color: '#f5f5f5' }} />
             </button>
@@ -63,7 +63,7 @@ export default function Header() {
                             <li className="flex justify-start items-center transition hover:bg-backgound-hover hover:duration-100">
                                 <a
                                     className="flex text-letters p-2 hover:font-2xl"
-                                    href="/monthly-values"
+                                    href="/transactions"
                                 >
                                     <GiNotebook
                                         size={20}

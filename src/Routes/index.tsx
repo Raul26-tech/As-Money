@@ -2,7 +2,8 @@ import { BrowserRouter, Route, Routes as RoutesDom } from 'react-router-dom';
 import Header from '../components/Header';
 import Home from '../pages/Home';
 import MonthlyReports from '../pages/MonthlyReports';
-import MonthlyVAlues from '../pages/MonthlyValues';
+import MonthlyValues from '../pages/MonthlyValues';
+import FormMonthlyValues from '../pages/MonthlyValues/form';
 
 export default function Routes() {
     return (
@@ -10,7 +11,15 @@ export default function Routes() {
             <Header />
             <RoutesDom>
                 <Route path="/" element={<Home />} />
-                <Route path="/monthly-values" element={<MonthlyVAlues />} />
+                <Route path="/transactions" element={<MonthlyValues />} />
+                <Route
+                    path="/transactions/form"
+                    element={<FormMonthlyValues />}
+                />
+                <Route
+                    path="/transactions/form/:id"
+                    element={<FormMonthlyValues />}
+                />
                 <Route path="/monthly-Reports" element={<MonthlyReports />} />
             </RoutesDom>
         </BrowserRouter>
