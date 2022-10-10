@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { api } from '../../Services/api';
 import { AiOutlinePlus } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
+import Content from '../../components/Content';
 
 interface ITransaction {
     id: string;
@@ -29,9 +30,9 @@ export default function MonthlyValues() {
     }, []);
 
     return (
-        <>
+        <Content>
             <div className="w-full full p-2 flex justify-end text-center">
-                <div className="flex w-full mt-[5rem] md:mt-[5rem] md:w-full justify-end h-[4rem] p-2">
+                <div className="flex w-full md:w-full justify-end h-[4rem] p-2">
                     <button className="w-[8rem] md:w-[16rem] h-full flex justify-center text-center items-center text-white bg-btn-transaction hover:bg-btn-transaction-hover rounded-md p-2 shadow-lg">
                         <AiOutlinePlus
                             size={20}
@@ -46,6 +47,6 @@ export default function MonthlyValues() {
                     </button>
                 </div>
             </div>
-        </>
+        </Content>
     );
 }

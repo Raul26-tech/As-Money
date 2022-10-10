@@ -1,3 +1,9 @@
+import Content from '../../components/Content';
+
 export default function MonthlyReports() {
-    return <div>MonthlyReports</div>;
+    return (
+        <Content>
+            <div>MonthlyReports</div>
+        </Content>
+    );
 }

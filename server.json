@@ -68,6 +68,17 @@
       "price": "50",
       "title": "Inclusão",
       "id": 5
+    },
+    {
+      "price": "0",
+      "title": "Testando inclusão de transação",
+      "code": "00510",
+      "description": "Saída de sábado",
+      "status": {
+        "prohibited": false,
+        "closed": true
+      },
+      "id": 6
     }
   ]
 }

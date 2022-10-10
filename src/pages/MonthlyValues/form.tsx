@@ -55,6 +55,7 @@ export default function FormMonthlyValues() {
                     confirmButtonText: 'Ok',
                     width: '24em',
                 });
+                console.log(response.data);
             });
         } catch (error: any) {
             Swal.fire({
@@ -71,42 +72,47 @@ export default function FormMonthlyValues() {
             <Content>
                 <form
                     onSubmit={handleSubmit(handleSave)}
-                    className="flex flex-col w-full h-full gap-x-3 gap-y-2 p-8"
+                    className="w-full grid md:grid-cols-2 xl:grid-cols-4 md:gap-x-5 gap-y-3 p-6
+                    "
                 >
-                    <div className="w-[5rem] mb-6 flex justify-center items-center">
+                    <div className="w-full grid col-span-4 mb-3 justify-start">
                         <button
                             type="submit"
-                            className="w-full h-full flex  justify-center text-center items-center text-white bg-btn-transaction hover:bg-btn-transaction-hover rounded-md p-2 shadow-lg "
+                            className="w-full h-full flex  justify-center text-center items-center text-white bg-btn-transaction hover:bg-btn-transaction-hover rounded-md shadow-lg "
                         >
-                            <span className="text-[0.70rem] md:text-base">
+                            <span className="text-[0.70rem] md:text-base p-2">
                                 Incluir
                             </span>
                         </button>
                     </div>
+
                     <Input
                         label="Código"
                         {...register('code')}
                         error={formState.errors.code}
                         type="text"
-                        addClassName="md:col-span-2"
+                        addClassName="col-span-4 md:col-span-1"
                         autoFocus
                     />
                     <Input
                         label="Título"
                         {...register('title')}
                         error={formState.errors.title}
+                        addClassName="col-span-4 md:col-span-1"
                         type="text"
                     />
                     <Input
                         label="Descrição"
                         {...register('description')}
                         error={formState.errors.description}
+                        addClassName="col-span-4 md:col-span-2"
                         type="text"
                     />
                     <Input
                         label="Preço"
                         {...register('price')}
                         error={formState.errors.price}
+                        addClassName="col-span-4 md:col-span-1"
                         type="number"
                     />
                     <CheckboxContainer label="Será uma">
