@@ -8,7 +8,7 @@ import FormMonthlyValues from '../pages/MonthlyValues/form';
 export default function Routes() {
     return (
         <BrowserRouter>
-            <Header />
+            {/* <Header /> */}
             <RoutesDom>
                 <Route path="/" element={<Home />} />
                 <Route path="/transactions" element={<MonthlyValues />} />

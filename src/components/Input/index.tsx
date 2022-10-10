@@ -47,12 +47,12 @@ const InputMain: ForwardRefRenderFunction<HTMLInputElement, IInputProps> = (
             )}
             <input
                 {...rest}
-                className={`${className}, ${addClassName}`}
+                className={`${className} ${addClassName}`}
                 type={type}
                 ref={ref}
             />
             {error?.message ? (
-                <span className="text-red-500 text-xs">{error.message}</span>
+                <span className="text-red-400 text-xs">{error.message}</span>
             ) : null}
         </label>
     );

@@ -31,17 +31,18 @@ export default function MonthlyValues() {
     return (
         <>
             <div className="w-full full p-2 flex justify-end text-center">
-                <div className="bg-blue-400 flex w-full mt-[5rem] md:mt-[5rem] md:w-full justify-end h-[4rem] p-2">
+                <div className="flex w-full mt-[5rem] md:mt-[5rem] md:w-full justify-end h-[4rem] p-2">
                     <button className="w-[8rem] md:w-[16rem] h-full flex justify-center text-center items-center text-white bg-btn-transaction hover:bg-btn-transaction-hover rounded-md p-2 shadow-lg">
                         <AiOutlinePlus
                             size={20}
                             style={{ marginRight: '0.25rem' }}
                         />
-                        <span className="text-[0.70rem] md:text-base">
-                            <Link to={'/transactions/form'}>
-                                Adicionar nova transação
-                            </Link>
-                        </span>
+                        <Link
+                            to={'/transactions/form'}
+                            className="text-[0.70rem] md:text-base"
+                        >
+                            Adicionar nova transação
+                        </Link>
                     </button>
                 </div>
             </div>
