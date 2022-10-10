@@ -7,6 +7,9 @@ import { Input } from '../../components/Input';
 import { api } from '../../Services/api';
 import Swal from 'sweetalert2';
 import Content from '../../components/Content';
+import { useCallback, useEffect } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import Button, { ButtonLink } from '../../components/Button';
 
 const schema = yup
     .object({
@@ -29,7 +32,8 @@ interface IFormTransactionProps {
 }
 
 export default function FormMonthlyValues() {
-    const { register, handleSubmit, formState } =
+    const navigate = useNavigate();
+    const { register, handleSubmit, formState, reset } =
         useForm<IFormTransactionProps>({
             resolver: yupResolver(schema),
             defaultValues: {
@@ -55,7 +59,7 @@ export default function FormMonthlyValues() {
                     confirmButtonText: 'Ok',
                     width: '24em',
                 });
-                console.log(response.data);
+                navigate(`${response.data.id}`);
             });
         } catch (error: any) {
             Swal.fire({
@@ -75,15 +79,15 @@ export default function FormMonthlyValues() {
                     className="w-full grid md:grid-cols-2 xl:grid-cols-4 md:gap-x-5 gap-y-3 p-6
                     "
                 >
-                    <div className="w-full grid col-span-4 mb-3 justify-start">
-                        <button
-                            type="submit"
-                            className="w-full h-full flex  justify-center text-center items-center text-white bg-btn-transaction hover:bg-btn-transaction-hover rounded-md shadow-lg "
-                        >
-                            <span className="text-[0.70rem] md:text-base p-2">
+                    <div className="w-full col-span-4 mb-3 justify-start">
+                        <div className="w-full flex col-span-1 space-x-2">
+                            <Button pattern="success" type="submit">
                                 Incluir
-                            </span>
-                        </button>
+                            </Button>
+                            <ButtonLink to="/transactions" pattern="cancel">
+                                Cancelar
+                            </ButtonLink>
+                        </div>
                     </div>
 
                     <Input
