@@ -16,6 +16,7 @@ const schema = yup
         code: yup.string().required('Código é obrigatório'),
         title: yup.string().required('Título é obrigatório'),
         price: yup.string().required('Preço é obrigatório'),
+        description: yup.string().required('Descrição é obrigatório'),
     })
     .required();
 
@@ -33,6 +34,7 @@ interface IFormTransactionProps {
 
 export default function FormMonthlyValues() {
     const navigate = useNavigate();
+    const { id } = useParams();
     const { register, handleSubmit, formState, reset } =
         useForm<IFormTransactionProps>({
             resolver: yupResolver(schema),
@@ -82,10 +84,10 @@ export default function FormMonthlyValues() {
                     <div className="w-full col-span-4 mb-3 justify-start">
                         <div className="w-full flex col-span-1 space-x-2">
                             <Button pattern="success" type="submit">
-                                Incluir
+                                incluir
                             </Button>
                             <ButtonLink to="/transactions" pattern="cancel">
-                                Cancelar
+                                cancelar
                             </ButtonLink>
                         </div>
                     </div>

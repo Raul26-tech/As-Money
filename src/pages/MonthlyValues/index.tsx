@@ -1,8 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { api } from '../../Services/api';
 import { AiOutlinePlus } from 'react-icons/ai';
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import Content from '../../components/Content';
+import Swal from 'sweetalert2';
+import { MdCircle } from 'react-icons/md';
 
 interface ITransaction {
     id: string;
@@ -14,18 +16,32 @@ interface ITransaction {
     closed: boolean;
 }
 
-export default function MonthlyValues() {
-    const [isOpen, setIsOpen] = useState(false);
-    const [transaction, setTransaction] = useState<ITransaction[]>([]);
+const url = '/transactions';
 
-    //Carregando transações
+export default function MonthlyValues() {
+    const [transaction, setTransaction] = useState<ITransaction[]>([]);
+    const navigate = useNavigate();
+
+    const handleFormId = useCallback(
+        (id: string) => {
+            navigate(`${url}/form/${id}`);
+        },
+        [navigate]
+    );
+
     useEffect(() => {
         api.get<ITransaction[]>('/transactions')
             .then((response) => {
+                console.log(JSON.stringify(response.data, null, 2));
                 setTransaction(response.data);
             })
             .catch((error) => {
-                console.log(error.response.data);
+                Swal.fire({
+                    title: 'Erro!',
+                    text: error.response.data.message,
+                    icon: 'success',
+                    confirmButtonText: 'Ok',
+                });
             });
     }, []);
 
@@ -47,6 +63,34 @@ export default function MonthlyValues() {
                     </button>
                 </div>
             </div>
+            {transaction.map(
+                ({
+                    code,
+                    description,
+                    id,
+                    price,
+                    prohibited,
+                    title,
+                }: ITransaction) => (
+                    <button
+                        key={id}
+                        onClick={() => handleFormId(id)}
+                        className="w-full mt-1 p-6 grid col-span-4 space-y-3 rounded-md shadow-md"
+                    >
+                        <h3 className="flex justify-center items-center text-normal">
+                            {title}
+                        </h3>
+                        <hr />
+                        <div className="flex flex-col justify-start items-start space-y-2">
+                            <span className="font-normal">Código: {code}</span>
+                            <p className="grid gap-y-0.5 p-1 whitespace-pre-line text-md">
+                                {description}
+                            </p>
+                            <span>Valor: {price}</span>
+                        </div>
+                    </button>
+                )
+            )}
         </Content>
     );
 }

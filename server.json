@@ -90,6 +90,28 @@
       "price": "350",
       "title": "Teste",
       "id": 7
+    },
+    {
+      "code": "0078",
+      "description": "Testeeeeeeeeeee",
+      "status": {
+        "prohibited": true,
+        "closed": false
+      },
+      "price": "145",
+      "title": "Teste",
+      "id": 8
+    },
+    {
+      "code": "14587",
+      "description": "teste",
+      "status": {
+        "prohibited": false,
+        "closed": true
+      },
+      "price": "145",
+      "title": "Testando",
+      "id": 9
     }
   ]
 }
