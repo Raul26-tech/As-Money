@@ -41,18 +41,18 @@ const InputMain: ForwardRefRenderFunction<HTMLInputElement, IInputProps> = (
     ref
 ) => {
     return (
-        <label className="w-full">
+        <label className={`w-full ${addClassName}`}>
             {label && (
                 <span className="block text-xs mb-1 font-medium">{label}</span>
             )}
             <input
                 {...rest}
-                className={`${className}, ${addClassName}`}
+                className={`${className} `}
                 type={type}
                 ref={ref}
             />
             {error?.message ? (
-                <span className="text-red-500 text-xs">{error.message}</span>
+                <span className="text-red-400 text-xs">{error.message}</span>
             ) : null}
         </label>
     );

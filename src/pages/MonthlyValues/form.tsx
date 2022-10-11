@@ -6,12 +6,17 @@ import CheckboxContainer from '../../components/Checkbox/Components';
 import { Input } from '../../components/Input';
 import { api } from '../../Services/api';
 import Swal from 'sweetalert2';
+import Content from '../../components/Content';
+import { useCallback, useEffect } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import Button, { ButtonLink } from '../../components/Button';
 
 const schema = yup
     .object({
         code: yup.string().required('Código é obrigatório'),
         title: yup.string().required('Título é obrigatório'),
         price: yup.string().required('Preço é obrigatório'),
+        description: yup.string().required('Descrição é obrigatório'),
     })
     .required();
 
@@ -28,7 +33,9 @@ interface IFormTransactionProps {
 }
 
 export default function FormMonthlyValues() {
-    const { register, handleSubmit, formState } =
+    const navigate = useNavigate();
+    const { id } = useParams();
+    const { register, handleSubmit, formState, reset } =
         useForm<IFormTransactionProps>({
             resolver: yupResolver(schema),
             defaultValues: {
@@ -54,6 +61,7 @@ export default function FormMonthlyValues() {
                     confirmButtonText: 'Ok',
                     width: '24em',
                 });
+                navigate(`${response.data.id}`);
             });
         } catch (error: any) {
             Swal.fire({
@@ -67,58 +75,66 @@ export default function FormMonthlyValues() {
 
     return (
         <>
-            <form
-                onSubmit={handleSubmit(handleSave)}
-                className="flex flex-col w-full h-full gap-x-3 md:gap-x-5 gap-y-2 pb-3"
-            >
-                <Input
-                    label="Código"
-                    {...register('code')}
-                    error={formState.errors.code}
-                    type="text"
-                    autoFocus
-                />
-                <Input
-                    label="Título"
-                    {...register('title')}
-                    error={formState.errors.title}
-                    type="text"
-                />
-                <Input
-                    label="Descrição"
-                    {...register('description')}
-                    error={formState.errors.description}
-                    type="text"
-                />
-                <Input
-                    label="Preço"
-                    {...register('price')}
-                    error={formState.errors.price}
-                    type="number"
-                />
-                <CheckboxContainer label="Será uma">
-                    <Checkbox
-                        label="Entrada"
-                        {...register('status.prohibited')}
-                        error={formState.errors.status?.prohibited}
+            <Content>
+                <form
+                    onSubmit={handleSubmit(handleSave)}
+                    className="w-full grid md:grid-cols-2 xl:grid-cols-4 md:gap-x-5 gap-y-3 p-6
+                    "
+                >
+                    <div className="w-full col-span-4 mb-3 justify-start">
+                        <div className="w-full flex col-span-1 space-x-2">
+                            <Button pattern="success" type="submit">
+                                incluir
+                            </Button>
+                            <ButtonLink to="/transactions" pattern="cancel">
+                                cancelar
+                            </ButtonLink>
+                        </div>
+                    </div>
+
+                    <Input
+                        label="Código"
+                        {...register('code')}
+                        error={formState.errors.code}
+                        type="text"
+                        addClassName="col-span-4 md:col-span-1"
+                        autoFocus
                     />
-                    <Checkbox
-                        label="Saída"
-                        error={formState.errors.status?.closed}
-                        {...register('status.closed')}
+                    <Input
+                        label="Título"
+                        {...register('title')}
+                        error={formState.errors.title}
+                        addClassName="col-span-4 md:col-span-1"
+                        type="text"
                     />
-                </CheckboxContainer>
-                <div className="mt-3 flex justify-center items-center">
-                    <button
-                        type="submit"
-                        className="w-full h-full flex  justify-center text-center items-center text-white bg-btn-transaction hover:bg-btn-transaction-hover rounded-md p-2 shadow-lg "
-                    >
-                        <span className="text-[0.70rem] md:text-base">
-                            Incluir
-                        </span>
-                    </button>
-                </div>
-            </form>
+                    <Input
+                        label="Descrição"
+                        {...register('description')}
+                        error={formState.errors.description}
+                        addClassName="col-span-4 md:col-span-2"
+                        type="text"
+                    />
+                    <Input
+                        label="Preço"
+                        {...register('price')}
+                        error={formState.errors.price}
+                        addClassName="col-span-4 md:col-span-1"
+                        type="number"
+                    />
+                    <CheckboxContainer label="Será uma">
+                        <Checkbox
+                            label="Entrada"
+                            {...register('status.prohibited')}
+                            error={formState.errors.status?.prohibited}
+                        />
+                        <Checkbox
+                            label="Saída"
+                            error={formState.errors.status?.closed}
+                            {...register('status.closed')}
+                        />
+                    </CheckboxContainer>
+                </form>
+            </Content>
         </>
     );
 }

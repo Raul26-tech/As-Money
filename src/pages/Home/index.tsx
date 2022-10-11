@@ -1,9 +1,10 @@
 import 'animate.css';
 import IconIlustrator from '../../assets/iconMoney.svg';
+import Content from '../../components/Content';
 
 export default function Home() {
     return (
-        <>
+        <Content>
             <section className="flex-1 h-full translate-y-full p-5 justify-center items-center ">
                 <div className="flex justify-center items-center text">
                     <span className="animate__animated animate__rubberBand flex justify-center items-center text-center md:text-xl">
@@ -19,6 +20,6 @@ export default function Home() {
                     alt="Ilustração"
                 />
             </div>
-        </>
+        </Content>
     );
 }
