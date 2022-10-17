@@ -4,7 +4,6 @@ import { AiOutlinePlus } from 'react-icons/ai';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 import Content from '../../components/Content';
 import Swal from 'sweetalert2';
-import { MdCircle } from 'react-icons/md';
 
 interface ITransaction {
     id: string;

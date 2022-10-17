@@ -50,7 +50,6 @@ export default function FormMonthlyValues() {
             } as IFormTransactionProps,
         });
 
-    //Criando transação
     const handleSave: SubmitHandler<IFormTransactionProps> = async (data) => {
         try {
             await api.post('/transactions', data).then((response) => {
@@ -81,17 +80,6 @@ export default function FormMonthlyValues() {
                     className="w-full grid md:grid-cols-2 xl:grid-cols-4 md:gap-x-5 gap-y-3 p-6
                     "
                 >
-                    <div className="w-full col-span-4 mb-3 justify-start">
-                        <div className="w-full flex col-span-1 space-x-2">
-                            <Button pattern="success" type="submit">
-                                incluir
-                            </Button>
-                            <ButtonLink to="/transactions" pattern="cancel">
-                                cancelar
-                            </ButtonLink>
-                        </div>
-                    </div>
-
                     <Input
                         label="Código"
                         {...register('code')}
