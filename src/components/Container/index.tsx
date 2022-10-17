@@ -5,5 +5,5 @@ interface IContainerProps {
 }
 
 export function Container({ children }: IContainerProps) {
-    return <div className="flex-1 overflow-y-auto">{children}</div>;
+    return <div className="flex-1 overflow-y-auto mt-[5rem]">{children}</div>;
 }
