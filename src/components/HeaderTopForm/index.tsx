@@ -1,31 +1,70 @@
 import Button from '../Button';
 
 interface IHeaderFormProps {
-    buttonSave?: boolean;
-    buttomRemove?: boolean;
-    buttonEdit: boolean;
-    onEdit?: () => void;
-    onSave?: () => void;
-    onCancel?: () => void;
+    modeSave: boolean;
+    modeEdit: boolean;
+    modeCancel: boolean;
+    modeRemove: boolean;
+    onHandleEdit?: () => void;
+    onHandleSave?: () => void;
+    onHandleCancel?: () => void;
+    onHandleRemove?: () => void;
+    titleSection?: string;
 }
 
 export default function HeaderTopForm({
-    buttonEdit = false,
-    buttomRemove = false,
-    buttonSave = false,
-    onCancel,
-    onEdit,
-    onSave,
+    modeSave = false,
+    modeCancel = false,
+    modeEdit = false,
+    modeRemove = false,
+    titleSection,
+    onHandleCancel,
+    onHandleRemove,
+    onHandleEdit,
+    onHandleSave,
 }: IHeaderFormProps) {
     return (
-        <div className="grid grid-cols-4 w-full h-10 bg-red-300">
-            <div className="flex flex-row justify-start items-center space-x-2">
-                {buttonSave && (
-                    <Button pattern="success" type="submit">
-                        Salvar
-                    </Button>
-                )}
+        <>
+            <div className="grid grid-cols-4 w-full h-[5rem]">
+                <div className="flex grid-cols-4 space-x-1 m-7 justify-start items-center">
+                    {modeSave && (
+                        <Button
+                            pattern="success"
+                            type="submit"
+                            onClick={onHandleSave}
+                        >
+                            Salvar
+                        </Button>
+                    )}
+                    {modeEdit && (
+                        <Button
+                            pattern="success"
+                            type="button"
+                            onClick={onHandleEdit}
+                        >
+                            Editar
+                        </Button>
+                    )}
+                    {modeRemove && (
+                        <Button
+                            pattern="cancel"
+                            type="button"
+                            onClick={onHandleRemove}
+                        >
+                            Excluir
+                        </Button>
+                    )}
+                    {modeCancel && (
+                        <Button
+                            pattern="cancel"
+                            type="button"
+                            onClick={onHandleCancel}
+                        >
+                            Cancelar
+                        </Button>
+                    )}
+                </div>
             </div>
-        </div>
+        </>
     );
 }
