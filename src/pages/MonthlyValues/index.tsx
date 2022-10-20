@@ -1,10 +1,9 @@
 import { useCallback, useEffect, useState } from 'react';
 import { api } from '../../Services/api';
 import { AiOutlinePlus } from 'react-icons/ai';
-import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Content from '../../components/Content';
 import Swal from 'sweetalert2';
-import { MdCircle } from 'react-icons/md';
 
 interface ITransaction {
     id: string;
@@ -26,6 +25,7 @@ export default function MonthlyValues() {
         (id: string) => {
             navigate(`${url}/form/${id}`);
         },
+
         [navigate]
     );
 
@@ -47,7 +47,7 @@ export default function MonthlyValues() {
 
     return (
         <Content>
-            <div className="w-full full p-2 flex justify-end text-center">
+            <div className="w-full full flex p-2 justify-end text-center">
                 <div className="flex w-full md:w-full justify-end h-[4rem] p-2">
                     <button className="w-[8rem] md:w-[16rem] h-full flex justify-center text-center items-center text-white bg-btn-transaction hover:bg-btn-transaction-hover rounded-md p-2 shadow-lg">
                         <AiOutlinePlus

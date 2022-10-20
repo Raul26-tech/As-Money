@@ -112,6 +112,17 @@
       "price": "145",
       "title": "Testando",
       "id": 9
+    },
+    {
+      "code": "0048",
+      "description": "Oláaaa",
+      "status": {
+        "prohibited": true,
+        "closed": false
+      },
+      "price": "15",
+      "title": "Teste",
+      "id": 10
     }
   ]
 }

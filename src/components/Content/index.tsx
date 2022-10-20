@@ -8,9 +8,9 @@ interface IContentProps {
 
 export default function Content({ children }: IContentProps) {
     return (
-        <div className="h-screen w-screen relative">
+        <div className="h-screen w-screen">
             <div className="flex flex-row h-full">
-                <div className="w-64 h-full flex flex-col flex-1">
+                <div className="h-full flex flex-col flex-1">
                     <Header />
                     <Container>{children}</Container>
                 </div>

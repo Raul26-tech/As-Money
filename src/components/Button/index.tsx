@@ -4,25 +4,28 @@ import { Link, LinkProps } from 'react-router-dom';
 export interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     children: ReactNode;
     onCancel?: () => void;
-    pattern?: 'success' | 'cancel' | 'info';
+    pattern?: 'success' | 'cancel' | 'info' | 'edit';
+    addClassName?: string;
 }
 
 const COLORS = {
     success: 'bg-pattern-success',
     cancel: 'bg-pattern-cancel',
     info: 'pattern-info',
+    edit: 'pattern-edit',
 };
 
 export default function Button({
     children,
     onCancel,
     pattern = 'info',
+    addClassName,
     ...rest
 }: IButtonProps) {
     return (
-        <div className="w-[5rem] flex space-x-3">
+        <div className="w-[10rem] md:w-full flex">
             <button
-                className={`w-full p-2 rounded-md text-white font-normal shadow-md ${COLORS[pattern]}`}
+                className={`w-full flex justify-center items-center p-2 rounded-md text-white font-normal shadow-md ${COLORS[pattern]} ${addClassName}`}
                 onClick={onCancel}
                 {...rest}
             >

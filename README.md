@@ -1,10 +1,10 @@
-# Getting Started with Create React App
+# Bem vindo ao As-Maney
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is project for programation studants, the project consists of fixing knowledge using technologies such as React, Typescript, state management and all the knowledge acquired so far.
 
-## Available Scripts
+## Project
 
-In the project directory, you can run:
+Or why?
 
 ### `npm start`
 

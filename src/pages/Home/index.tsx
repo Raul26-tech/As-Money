@@ -5,21 +5,17 @@ import Content from '../../components/Content';
 export default function Home() {
     return (
         <Content>
-            <section className="flex-1 h-full translate-y-full p-5 justify-center items-center ">
-                <div className="flex justify-center items-center text">
-                    <span className="animate__animated animate__rubberBand flex justify-center items-center text-center md:text-xl">
-                        Seja bem vindo(a) ao Ass-Money, a melhor maneira de
-                        contabilizar os gastos
-                    </span>
-                </div>
-            </section>
-            <div className="w-full flex justify-center items-center mt-14 md:mt-12">
+            <section className="flex flex-col w-full h-full justify-center items-center">
                 <img
-                    className="animate__animated animate__rubberBand flex justify-center items-center"
+                    className="animate__animated animate__rubberBand"
                     src={IconIlustrator}
                     alt="Ilustração"
                 />
-            </div>
+                <p className="animate__animated animate__rubberBand text-center text-sm md:text-xl ">
+                    Seja bem vindo(a) ao Ass-Money, a melhor maneira de
+                    contabilizar os gastos
+                </p>
+            </section>
         </Content>
     );
 }
