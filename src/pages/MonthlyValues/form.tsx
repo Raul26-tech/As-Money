@@ -19,6 +19,7 @@ export default function FormMonthlyValues() {
     return (
         <Content>
             <HeaderTopForm
+                titleSection="Transações"
                 modeSave={
                     mode === 'insert' || mode === 'edit' || mode === 'remove'
                 }
