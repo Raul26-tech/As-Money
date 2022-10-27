@@ -36,6 +36,7 @@ const InputMain: ForwardRefRenderFunction<HTMLInputElement, IInputProps> = (
     shadow-md
     focus:shadow-lg
     `,
+        disabled,
         ...rest
     },
     ref
@@ -50,6 +51,7 @@ const InputMain: ForwardRefRenderFunction<HTMLInputElement, IInputProps> = (
                 className={`${className} `}
                 type={type}
                 ref={ref}
+                disabled={disabled}
             />
             {error?.message ? (
                 <span className="text-red-400 text-xs">{error.message}</span>
