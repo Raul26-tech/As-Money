@@ -13,19 +13,19 @@ export default function CheckboxContainer({
 }: ICheckboxContainer) {
     return (
         <>
-            <div className="grid col-span-4">
+            <div className="grid">
                 <span
                     className=" 
                     block
                     text-xs
                     text-gmov-input-label
                     font-medium
+                    mb-1
                     "
                 >
                     {label}
                 </span>
-            </div>
-            <div className="grid col-span-4 md:col-span-2">
+
                 <div className="p-2 justify-center items-center rounded-md border-gmov-input-border border shadow-md">
                     {children}
                 </div>

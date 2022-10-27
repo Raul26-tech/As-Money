@@ -25,22 +25,21 @@ export default function HeaderTopForm({
 }: IHeaderFormProps) {
     return (
         <>
-            <div className="grid grid-cols-4 w-full h-[5rem]">
-                <div className="flex grid-cols-4 space-x-1 m-7 justify-start items-center">
+            <section className="flex flex-col m-3 p-1">
+                <div className="p-1 text-md text-slate-800">
+                    <span>{titleSection}</span>
+                </div>
+                <div className="flex space-x-2 mt-2">
                     {modeSave && (
-                        <Button
-                            pattern="success"
-                            type="submit"
-                            onClick={onHandleSave}
-                        >
+                        <Button pattern="success" type="submit">
                             Salvar
                         </Button>
                     )}
                     {modeEdit && (
                         <Button
-                            pattern="success"
-                            type="button"
+                            pattern="edit"
                             onClick={onHandleEdit}
+                            type="button"
                         >
                             Editar
                         </Button>
@@ -48,8 +47,8 @@ export default function HeaderTopForm({
                     {modeRemove && (
                         <Button
                             pattern="cancel"
-                            type="button"
                             onClick={onHandleRemove}
+                            type="button"
                         >
                             Excluir
                         </Button>
@@ -57,14 +56,14 @@ export default function HeaderTopForm({
                     {modeCancel && (
                         <Button
                             pattern="cancel"
-                            type="button"
                             onClick={onHandleCancel}
+                            type="button"
                         >
                             Cancelar
                         </Button>
                     )}
                 </div>
-            </div>
+            </section>
         </>
     );
 }

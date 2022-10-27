@@ -23,9 +23,9 @@ export default function Button({
     ...rest
 }: IButtonProps) {
     return (
-        <div className="w-[10rem] md:w-full flex">
+        <div className="flex">
             <button
-                className={`w-full flex justify-center items-center p-2 rounded-md text-white font-normal shadow-md ${COLORS[pattern]} ${addClassName}`}
+                className={`w-[6rem] flex justify-center items-center p-2 rounded-md text-white font-normal shadow-md ${COLORS[pattern]} ${addClassName}`}
                 onClick={onCancel}
                 {...rest}
             >
