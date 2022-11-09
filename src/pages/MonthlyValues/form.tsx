@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Checkbox } from '../../components/Checkbox';
@@ -9,6 +9,8 @@ import { Input } from '../../components/Input';
 import loadingIcon from '../../assets/loading.gif';
 import { api } from '../../Services/api';
 import Swal from 'sweetalert2';
+
+const url = '/transactions';
 
 interface ITransaction {
     id: string;
@@ -25,13 +27,14 @@ interface ITransaction {
 
 export default function FormMonthlyValues() {
     const { id } = useParams();
+    const [data, setData] = useState<ITransaction>();
     const [mode, setMode] = useState<'read' | 'insert' | 'edit' | 'remove'>(
         id ? 'read' : 'insert'
     );
     const [isLoad, setIsLoad] = useState(false);
     const navigate = useNavigate();
 
-    const { register, handleSubmit, formState } = useForm<ITransaction>({
+    const { register, handleSubmit, formState, reset } = useForm<ITransaction>({
         defaultValues: {
             code: '',
             title: 'Nova transação',
@@ -44,13 +47,28 @@ export default function FormMonthlyValues() {
         },
     });
 
+    // Resetando os dados do form
+    const resetForm = useCallback(async () => {
+        if (id) {
+            setIsLoad(true);
+            const response = await api.get<ITransaction>(`${url}/form/${id}`);
+            setMode('read');
+            reset(response.data);
+            setData(response.data);
+        }
+    }, [id, reset]);
+
+    useEffect(() => {
+        resetForm();
+    }, [resetForm]);
+
     const onHandleSaveTransaction: SubmitHandler<ITransaction> = async (
         submitData
     ) => {
         setIsLoad(true);
         await api
-            .post('transactions/form', submitData)
-            .then((res) => {
+            .post(`${url}`, submitData)
+            .then((response) => {
                 setIsLoad(false);
                 Swal.fire({
                     icon: 'success',
@@ -58,14 +76,15 @@ export default function FormMonthlyValues() {
                     text: 'Inserção feita com sucesso',
                 });
                 setMode('read');
-                navigate(`transactions/form/${id}`);
-                console.log(JSON.stringify(res.data, null, 2));
+                navigate(-1);
+                console.log(JSON.stringify(response.data, null, 2));
             })
             .catch((err: any) => {
                 Swal.fire({
                     icon: 'error',
                     title: err.response.data.message,
                 });
+                setIsLoad(false);
             });
     };
 
