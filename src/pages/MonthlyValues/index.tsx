@@ -63,34 +63,38 @@ export default function MonthlyValues() {
                     </button>
                 </div>
             </div>
-            {transaction.map(
-                ({
-                    code,
-                    description,
-                    id,
-                    price,
-                    prohibited,
-                    title,
-                }: ITransaction) => (
-                    <button
-                        key={id}
-                        onClick={() => handleFormId(id)}
-                        className="w-full mt-1 p-6 grid col-span-4 space-y-3 rounded-md shadow-md"
-                    >
-                        <h3 className="flex justify-center items-center text-normal">
-                            {title}
-                        </h3>
-                        <hr />
-                        <div className="flex flex-col justify-start items-start space-y-2">
-                            <span className="font-normal">Código: {code}</span>
-                            <p className="grid gap-y-0.5 p-1 whitespace-pre-line text-md">
-                                {description}
-                            </p>
-                            <span>Valor: {price}</span>
-                        </div>
-                    </button>
-                )
-            )}
+            {transaction
+                .reverse()
+                .map(
+                    ({
+                        code,
+                        description,
+                        id,
+                        price,
+                        prohibited,
+                        title,
+                    }: ITransaction) => (
+                        <button
+                            key={id}
+                            onClick={() => handleFormId(id)}
+                            className="w-full mt-1 p-6 grid col-span-4 space-y-3 rounded-md shadow-md"
+                        >
+                            <h3 className="flex justify-center items-center text-normal">
+                                {title}
+                            </h3>
+                            <hr />
+                            <div className="flex flex-col justify-start items-start space-y-2">
+                                <span className="font-normal">
+                                    Código: {code}
+                                </span>
+                                <p className="grid gap-y-0.5 p-1 whitespace-pre-line text-md">
+                                    {description}
+                                </p>
+                                <span>Valor: {price}</span>
+                            </div>
+                        </button>
+                    )
+                )}
         </Content>
     );
 }

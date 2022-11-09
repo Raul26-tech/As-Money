@@ -1,42 +1,66 @@
 {
-    "monthly-reports": [
-        {
-            "id": 1,
-            "title": "Gastos Mensais",
-            "open-value": 258.98,
-            "close-value": 0
-        },
-        {
-            "id": 1,
-            "title": "gasolina carro",
-            "open-value": 258.98,
-            "close-value": 25.65
-        }
-    ],
-    "transactions": [
-        {
-            "id": 1,
-            "code": "001",
-            "title": "Valor do Uber",
-            "description": "Foram gastos 134.52",
-            "price": 2.5,
-            "status": {
-                "prohibited": true,
-                "closed": false
-            },
-            "dateInclusion": "26/10/2022"
-        },
-        {
-            "code": "002",
-            "description": "Foram comprados os produtos que faltavam",
-            "status": {
-                "prohibited": false,
-                "closed": true
-            },
-            "price": "45",
-            "title": "Cantina do pastel",
-            "id": 2,
-            "dateInclusion": "26/10/2022"
-        }
-    ]
+  "monthly-reports": [
+    {
+      "id": 1,
+      "title": "Gastos Mensais",
+      "open-value": 258.98,
+      "close-value": 0
+    },
+    {
+      "id": 1,
+      "title": "gasolina carro",
+      "open-value": 258.98,
+      "close-value": 25.65
+    }
+  ],
+  "transactions": [
+    {
+      "id": 1,
+      "code": "001",
+      "title": "Valor do Uber",
+      "description": "Foram gastos 134.52",
+      "price": 2.5,
+      "status": {
+        "prohibited": true,
+        "closed": false
+      },
+      "dateInclusion": "26/10/2022"
+    },
+    {
+      "code": "002",
+      "description": "Foram comprados os produtos que faltavam",
+      "status": {
+        "prohibited": false,
+        "closed": true
+      },
+      "price": "45",
+      "title": "Cantina do pastel",
+      "id": 2,
+      "dateInclusion": "26/10/2022"
+    },
+    {
+      "code": "001",
+      "title": "Nova transação",
+      "description": "Testando inclusão",
+      "price": "150",
+      "status": {
+        "prohibited": true,
+        "closed": false
+      },
+      "dateInclusion": "2022-11-02",
+      "id": 3
+    },
+    {
+      "code": "002",
+      "title": "Nova transação",
+      "description": "Teste",
+      "price": "150",
+      "status": {
+        "prohibited": false,
+        "closed": true
+      },
+      "dateInclusion": "2022-11-09",
+      "id": 4
+    }
+  ]
 }
