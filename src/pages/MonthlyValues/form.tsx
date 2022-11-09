@@ -76,6 +76,7 @@ export default function FormMonthlyValues() {
                     text: 'Inserção feita com sucesso',
                 });
                 setMode('read');
+                navigate(-1);
                 console.log(JSON.stringify(response.data, null, 2));
             })
             .catch((err: any) => {
@@ -84,10 +85,6 @@ export default function FormMonthlyValues() {
                     title: err.response.data.message,
                 });
                 setIsLoad(false);
-            })
-            .finally(() => {
-                setMode('read');
-                navigate(-1);
             });
     };
 

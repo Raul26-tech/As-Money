@@ -13,6 +13,7 @@ interface ITransaction {
     prohibited: boolean;
     title: string;
     closed: boolean;
+    dateInclusion: string;
 }
 
 const url = '/transactions';
@@ -64,37 +65,47 @@ export default function MonthlyValues() {
                 </div>
             </div>
             {transaction
-                .reverse()
                 .map(
                     ({
                         code,
                         description,
                         id,
                         price,
-                        prohibited,
                         title,
+                        dateInclusion,
                     }: ITransaction) => (
                         <button
                             key={id}
                             onClick={() => handleFormId(id)}
-                            className="w-full mt-1 p-6 grid col-span-4 space-y-3 rounded-md shadow-md"
+                            className="w-full mt-1 p-6 grid col-span-4 space-y-3 gap-y-2 rounded-md shadow-md hover:shadow-2xl"
                         >
-                            <h3 className="flex justify-center items-center text-normal">
+                            <h3 className="flex justify-left items-center text-lg font-bold mt-1">
                                 {title}
                             </h3>
                             <hr />
                             <div className="flex flex-col justify-start items-start space-y-2">
-                                <span className="font-normal">
+                                <span className="font-normal text-base">
                                     Código: {code}
                                 </span>
-                                <p className="grid gap-y-0.5 p-1 whitespace-pre-line text-md">
+
+                                <p className="grid gap-y-0.2  whitespace-pre-line text-start text-sm text-slate-600">
                                     {description}
                                 </p>
-                                <span>Valor: {price}</span>
+
+                                <div className="w-full flex justify-start p-2 rounded-md bg-slate-200">
+                                    <span className="text-md p-1 text-slate-900">
+                                        Valor :
+                                        {new Intl.NumberFormat('pt-br', {
+                                            style: 'currency',
+                                            currency: 'BRL',
+                                        }).format(price)}
+                                    </span>
+                                </div>
                             </div>
                         </button>
                     )
-                )}
+                )
+                .reverse()}
         </Content>
     );
 }
