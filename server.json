@@ -145,6 +145,54 @@
       },
       "dateInclusion": "2022-11-08",
       "id": 11
+    },
+    {
+      "code": "003",
+      "title": "Nova transação",
+      "description": "Testando transação",
+      "price": "250",
+      "status": {
+        "prohibited": false,
+        "closed": false
+      },
+      "dateInclusion": "2022-11-21",
+      "id": 12
+    },
+    {
+      "code": "004",
+      "title": "Adicionando Transação",
+      "description": "Teste",
+      "price": "150",
+      "status": {
+        "prohibited": false,
+        "closed": true
+      },
+      "dateInclusion": "2022-11-16",
+      "id": 13
+    },
+    {
+      "code": "005",
+      "title": "Nova transação",
+      "description": "Teste",
+      "price": "150",
+      "status": {
+        "prohibited": true,
+        "closed": false
+      },
+      "dateInclusion": "2022-11-14",
+      "id": 14
+    },
+    {
+      "code": "006",
+      "title": "Nova transação",
+      "description": "Teste",
+      "price": "100",
+      "status": {
+        "prohibited": true,
+        "closed": false
+      },
+      "dateInclusion": "2022-11-21",
+      "id": 15
     }
   ]
 }
