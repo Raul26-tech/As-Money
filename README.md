@@ -8,7 +8,7 @@ Porque ?
 
 O projeto surgiu de uma necessidade, com base na dificuldade de toda vez estar anotando os gastos em planilhas ou em um caderno, criei a aplicação para com o intuito de automatizar o processo, assim podendo estar de uso fácil e rápido, como por exemplo no celular onde a todo o momento nós estamos com ele em maõs.
 
-## Como rodar o projeto - Front-end
+## `Front-end`
 
 Executa o aplicativo no modo de desenvolvimento.\
 Abra [http://localhost:3000](http://localhost:3000) para visualizá-lo no navegador.
