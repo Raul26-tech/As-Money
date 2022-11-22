@@ -33,7 +33,6 @@ export default function MonthlyValues() {
     useEffect(() => {
         api.get<ITransaction[]>('/transactions')
             .then((response) => {
-                console.log(JSON.stringify(response.data, null, 2));
                 setTransaction(response.data);
             })
             .catch((error) => {
@@ -94,7 +93,7 @@ export default function MonthlyValues() {
 
                                 <div className="w-full flex justify-start p-2 rounded-md bg-slate-200">
                                     <span className="text-md p-1 text-slate-900">
-                                        Valor :
+                                        <span className="mr-1">Valor:</span>
                                         {new Intl.NumberFormat('pt-br', {
                                             style: 'currency',
                                             currency: 'BRL',

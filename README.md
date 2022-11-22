@@ -1,46 +1,30 @@
 # Bem vindo ao As-Maney
 
-This is project for programation studants, the project consists of fixing knowledge using technologies such as React, Typescript, state management and all the knowledge acquired so far.
+Este é um projeto para alunos de programação, o projeto consiste em fixar conhecimentos utilizando tecnologias como React, Typescript, gerenciamento de estado e todo o conhecimento adquirido até o momento.
 
-## Project
+## Projeto
 
-Or why?
+Porque ?
 
-### `npm start`
+O projeto surgiu de uma necessidade, com base na dificuldade de toda vez estar anotando os gastos em planilhas ou até mesmo em folhas, criei a aplicação para estar de uso fácil e rápido, como por exemplo no celular onde a todo o momento nós estamos com ele em maõs.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Como rodar o projeto - Front-end
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## `npm start`
 
-### `npm test`
+Executa o aplicativo no modo de desenvolvimento.\
+Abra [http://localhost:3000](http://localhost:3000) para visualizá-lo no navegador.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+A página será recarregada se você fizer edições.\
+Você também verá quaisquer erros de lint no console.
 
-### `npm run build`
+## `## Back-end`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+O projeto tem alguns end-points, o back-end foi desenvolvido através do `json-server`, uma ferramenta que nós permite criar end-points "falsos" para testar nossa aplicação front-end. Para mais informações sobre a ferramenta acesse https://www.npmjs.com/package/json-server.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Para rodar os end-points, abra um terminal a parte ou até mesmo o próprio terminal do VsCode e dê o seguinte comando : yarn server caso esteja usando o YARN, ou npm server caso esteja usando o NPM, e está pronto, nosso back end rodará na porta http://localhost:3333/.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## End-Points
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+http://localhost:3333/transactions - Transações
+http://localhost:3333/transactions/${id} - Caso queira acessar alguma transação específica

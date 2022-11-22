@@ -27,7 +27,6 @@ interface ITransaction {
 
 export default function FormMonthlyValues() {
     const { id } = useParams();
-    const [data, setData] = useState<ITransaction>();
     const [mode, setMode] = useState<'read' | 'insert' | 'edit' | 'remove'>(
         id ? 'read' : 'insert'
     );
@@ -54,7 +53,6 @@ export default function FormMonthlyValues() {
             const response = await api.get<ITransaction>(`${url}/form/${id}`);
             setMode('read');
             reset(response.data);
-            setData(response.data);
         }
     }, [id, reset]);
 
@@ -69,6 +67,7 @@ export default function FormMonthlyValues() {
         await api
             .post(`${url}`, submitData)
             .then((response) => {
+                const data = response.data.id;
                 setIsLoad(false);
                 Swal.fire({
                     icon: 'success',
@@ -76,7 +75,7 @@ export default function FormMonthlyValues() {
                     text: 'Inserção feita com sucesso',
                 });
                 setMode('read');
-                navigate(-1);
+                navigate(`${url}/form/${data}`);
                 console.log(JSON.stringify(response.data, null, 2));
             })
             .catch((err: any) => {
