@@ -10,15 +10,13 @@ O projeto surgiu de uma necessidade, com base na dificuldade de toda vez estar a
 
 ## Como rodar o projeto - Front-end
 
-## `npm start`
-
 Executa o aplicativo no modo de desenvolvimento.\
 Abra [http://localhost:3000](http://localhost:3000) para visualizá-lo no navegador.
 
 A página será recarregada se você fizer edições.\
 Você também verá quaisquer erros de lint no console.
 
-## `## Back-end`
+## `Back-end`
 
 O projeto tem alguns end-points, o back-end foi desenvolvido através do `json-server`, uma ferramenta que nós permite criar end-points "falsos" para testar nossa aplicação front-end. Para mais informações sobre a ferramenta acesse https://www.npmjs.com/package/json-server.
 
@@ -26,5 +24,5 @@ Para rodar os end-points, abra um terminal a parte ou até mesmo o próprio term
 
 ## End-Points
 
-http://localhost:3333/transactions - Transações
-http://localhost:3333/transactions/${id} - Caso queira acessar alguma transação específica
+transactions - Transações.
+transactions/${id} - Caso queira acessar alguma transação específica.
