@@ -63,7 +63,7 @@ export default function Header() {
                             <li className="flex justify-start items-center transition hover:bg-backgound-hover hover:duration-100">
                                 <a
                                     className="flex text-letters p-2 hover:font-2xl"
-                                    href="/transactions"
+                                    href="/transactions/grid"
                                 >
                                     <GiNotebook
                                         size={20}

@@ -193,6 +193,54 @@
       },
       "dateInclusion": "2022-11-21",
       "id": 15
+    },
+    {
+      "code": "006",
+      "title": "Nova transação",
+      "description": "Nova transação",
+      "price": "150",
+      "status": {
+        "prohibited": true,
+        "closed": false
+      },
+      "dateInclusion": "2022-11-24",
+      "id": 16
+    },
+    {
+      "code": "00012",
+      "title": "Testando inclusão",
+      "description": "Titulo",
+      "price": "500",
+      "status": {
+        "prohibited": true,
+        "closed": false
+      },
+      "dateInclusion": "2022-12-28",
+      "id": 17
+    },
+    {
+      "code": "00215",
+      "title": "Nova transação",
+      "description": "Saída de caixa",
+      "price": "150",
+      "status": {
+        "prohibited": false,
+        "closed": true
+      },
+      "dateInclusion": "2022-12-23",
+      "id": 18
+    },
+    {
+      "code": "0000145",
+      "title": "Funcionou",
+      "description": "",
+      "price": "120",
+      "status": {
+        "prohibited": true,
+        "closed": false
+      },
+      "dateInclusion": "2022-12-29",
+      "id": 19
     }
   ]
 }

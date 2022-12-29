@@ -67,7 +67,6 @@ export default function FormMonthlyValues() {
         await api
             .post(`${url}`, submitData)
             .then((response) => {
-                const data = response.data.id;
                 setIsLoad(false);
                 Swal.fire({
                     icon: 'success',
@@ -75,7 +74,7 @@ export default function FormMonthlyValues() {
                     text: 'Inserção feita com sucesso',
                 });
                 setMode('read');
-                navigate(`${url}/form/${data}`);
+                navigate(`${url}/form/${id}`);
                 console.log(JSON.stringify(response.data, null, 2));
             })
             .catch((err: any) => {
