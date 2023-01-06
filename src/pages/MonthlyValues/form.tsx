@@ -6,7 +6,6 @@ import CheckboxContainer from '../../components/Checkbox/Components';
 import Content from '../../components/Content';
 import HeaderTopForm from '../../components/HeaderTopForm';
 import { Input } from '../../components/Input';
-import loadingIcon from '../../assets/loading.gif';
 import { api } from '../../Services/api';
 import Swal from 'sweetalert2';
 
@@ -51,8 +50,8 @@ export default function FormMonthlyValues() {
         if (id) {
             setIsLoad(true);
             const response = await api.get<ITransaction>(`${url}/form/${id}`);
-            setMode('read');
             reset(response.data);
+            setMode('read');
         }
     }, [id, reset]);
 
@@ -60,30 +59,27 @@ export default function FormMonthlyValues() {
         resetForm();
     }, [resetForm]);
 
-    const onHandleSaveTransaction: SubmitHandler<ITransaction> = async (
+    const handleSaveTransaction: SubmitHandler<ITransaction> = async (
         submitData
     ) => {
-        setIsLoad(true);
-        await api
-            .post(`${url}`, submitData)
-            .then((response) => {
-                setIsLoad(false);
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Sucesso',
-                    text: 'Inserção feita com sucesso',
-                });
-                setMode('read');
-                navigate(`${url}/form/${id}`);
-                console.log(JSON.stringify(response.data, null, 2));
-            })
-            .catch((err: any) => {
-                Swal.fire({
-                    icon: 'error',
-                    title: err.response.data.message,
-                });
-                setIsLoad(false);
+        try {
+            setIsLoad(true);
+            await api.post(`${url}`, submitData);
+            setIsLoad(false);
+            Swal.fire({
+                icon: 'success',
+                title: 'Sucesso',
+                text: 'Inserção feita com sucesso',
             });
+            setMode('read');
+            navigate(`${url}/form/${id}`);
+        } catch (error) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Ocorreu um erro durante a requisição',
+            });
+            setIsLoad(false);
+        }
     };
 
     const onRemove = useCallback(() => {
@@ -92,20 +88,11 @@ export default function FormMonthlyValues() {
         }
     }, [mode, navigate]);
 
-    if (isLoad) {
-        return (
-            <Content>
-                <div className="w-full h-full flex justify-center items-center">
-                    <img src={loadingIcon} alt="Loading" />
-                </div>
-            </Content>
-        );
-    }
     return (
         <Content>
             <form
                 className="flex flex-col md:grid-cols-2 xl:grid-cols-3 md:gap-x-5 gap-y-2 pb-3"
-                onSubmit={handleSubmit(onHandleSaveTransaction)}
+                onSubmit={handleSubmit(handleSaveTransaction)}
             >
                 <HeaderTopForm
                     titleSection="Transações"
@@ -137,8 +124,8 @@ export default function FormMonthlyValues() {
                         label="Data de inclusão"
                         error={formState.errors.dateInclusion}
                         {...register('dateInclusion')}
-                        disabled={mode === 'edit'}
                         type="date"
+                        disabled={mode !== 'insert' && mode !== 'edit'}
                     />
                     <Input
                         label="Descrição"

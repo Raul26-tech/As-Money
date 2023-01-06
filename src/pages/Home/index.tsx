@@ -8,15 +8,12 @@ export default function Home() {
         <Content>
             <Container>
                 <section className="flex flex-col w-full h-full justify-center items-center">
-                    <img
-                        className="animate__animated animate__rubberBand"
-                        src={IconIlustrator}
-                        alt="Ilustração"
-                    />
-                    <p className="animate__animated animate__rubberBand text-center text-sm md:text-xl ">
+                    <img src={IconIlustrator} alt="Ilustração" />
+
+                    <h4 className="text-center text-xs p-6 md:text-xl">
                         Seja bem vindo(a) ao Ass-Money, a melhor maneira de
                         contabilizar os gastos
-                    </p>
+                    </h4>
                 </section>
             </Container>
         </Content>

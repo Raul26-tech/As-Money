@@ -47,7 +47,7 @@ export default function MonthlyValues() {
         <Content>
             <div className="w-full mt-2 flex p-2 justify-end text-center">
                 <div className="flex w-full md:w-full justify-end h-[4rem] p-2">
-                    <button className="w-[8rem] md:w-[16rem] h-full flex justify-center text-center items-center text-white bg-btn-transaction hover:bg-btn-transaction-hover rounded-md p-2 shadow-lg">
+                    <button className="w-[8rem] md:w-[16rem] h-full flex justify-center text-center items-center text-white bg-colors-btn-transaction hover:bg-colors-btn-transaction-hover rounded-md p-2 shadow-lg">
                         <AiOutlinePlus
                             size={20}
                             style={{ marginRight: '0.25rem' }}
