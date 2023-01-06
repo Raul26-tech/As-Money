@@ -11,6 +11,7 @@ interface IInputProps extends InputHTMLAttributes<HTMLInputElement> {
     type?: string;
     className?: string;
     addClassName?: string;
+    colorClassInput?: string;
 }
 
 const InputMain: ForwardRefRenderFunction<HTMLInputElement, IInputProps> = (
@@ -18,6 +19,7 @@ const InputMain: ForwardRefRenderFunction<HTMLInputElement, IInputProps> = (
         error = null,
         label,
         type = 'text',
+        disabled,
         addClassName = '',
         className = `
     bg-input-color
@@ -36,7 +38,7 @@ const InputMain: ForwardRefRenderFunction<HTMLInputElement, IInputProps> = (
     shadow-md
     focus:shadow-lg
     `,
-        disabled,
+        colorClassInput = disabled ? 'bg-slate-100' : '',
         ...rest
     },
     ref
@@ -48,7 +50,7 @@ const InputMain: ForwardRefRenderFunction<HTMLInputElement, IInputProps> = (
             )}
             <input
                 {...rest}
-                className={`${className} `}
+                className={`${className} ${colorClassInput} `}
                 type={type}
                 ref={ref}
                 disabled={disabled}

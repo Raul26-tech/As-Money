@@ -16,15 +16,13 @@ interface ITransaction {
     dateInclusion: string;
 }
 
-const url = '/transactions';
-
 export default function MonthlyValues() {
     const [transaction, setTransaction] = useState<ITransaction[]>([]);
     const navigate = useNavigate();
 
     const handleFormId = useCallback(
         (id: string) => {
-            navigate(`${url}/form/${id}`);
+            navigate(`/transactions/form/${id}`);
         },
 
         [navigate]
@@ -47,9 +45,9 @@ export default function MonthlyValues() {
 
     return (
         <Content>
-            <div className="w-full full flex p-2 justify-end text-center">
+            <div className="w-full mt-2 flex p-2 justify-end text-center">
                 <div className="flex w-full md:w-full justify-end h-[4rem] p-2">
-                    <button className="w-[8rem] md:w-[16rem] h-full flex justify-center text-center items-center text-white bg-btn-transaction hover:bg-btn-transaction-hover rounded-md p-2 shadow-lg">
+                    <button className="w-[8rem] md:w-[16rem] h-full flex justify-center text-center items-center text-white bg-colors-btn-transaction hover:bg-colors-btn-transaction-hover rounded-md p-2 shadow-lg">
                         <AiOutlinePlus
                             size={20}
                             style={{ marginRight: '0.25rem' }}
@@ -66,14 +64,14 @@ export default function MonthlyValues() {
             {transaction
                 .map(
                     ({
+                        id,
                         code,
                         description,
-                        id,
                         price,
                         title,
                         dateInclusion,
                     }: ITransaction) => (
-                        <button
+                        <div
                             key={id}
                             onClick={() => handleFormId(id)}
                             className="w-full mt-1 p-6 grid col-span-4 space-y-3 gap-y-2 rounded-md shadow-md hover:shadow-2xl"
@@ -101,7 +99,7 @@ export default function MonthlyValues() {
                                     </span>
                                 </div>
                             </div>
-                        </button>
+                        </div>
                     )
                 )
                 .reverse()}

@@ -46,7 +46,7 @@ export default function HeaderTopForm({
                     )}
                     {modeRemove && (
                         <Button
-                            pattern="cancel"
+                            pattern="remove"
                             onClick={onHandleRemove}
                             type="button"
                         >

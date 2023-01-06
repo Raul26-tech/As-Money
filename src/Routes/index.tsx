@@ -9,7 +9,7 @@ export default function Routes() {
         <BrowserRouter>
             <RoutesDom>
                 <Route path="/" element={<Home />} />
-                <Route path="/transactions" element={<MonthlyValues />} />
+                <Route path="/transactions/grid" element={<MonthlyValues />} />
                 <Route
                     path="/transactions/form"
                     element={<FormMonthlyValues />}

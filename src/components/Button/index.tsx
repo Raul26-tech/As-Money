@@ -4,15 +4,16 @@ import { Link, LinkProps } from 'react-router-dom';
 export interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     children: ReactNode;
     onCancel?: () => void;
-    pattern?: 'success' | 'cancel' | 'info' | 'edit';
+    pattern?: 'success' | 'cancel' | 'info' | 'edit' | 'remove';
     addClassName?: string;
 }
 
 const COLORS = {
-    success: 'bg-pattern-success',
-    cancel: 'bg-pattern-cancel',
-    info: 'pattern-info',
-    edit: 'pattern-edit',
+    success: 'bg-colors-pattern-success',
+    cancel: 'bg-colors-pattern-cancel',
+    info: 'bg-colors-pattern-info',
+    edit: 'bg-colors-pattern-edit',
+    remove: 'bg-colors-pattern-remove',
 };
 
 export default function Button({
