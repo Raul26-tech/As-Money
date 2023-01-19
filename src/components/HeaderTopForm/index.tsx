@@ -1,10 +1,10 @@
 import Button from '../Button';
 
 interface IHeaderFormProps {
-    modeSave: boolean;
-    modeEdit: boolean;
-    modeCancel: boolean;
-    modeRemove: boolean;
+    modeSave?: boolean;
+    modeEdit?: boolean;
+    modeCancel?: boolean;
+    modeRemove?: boolean;
     onHandleEdit?: () => void;
     onHandleSave?: () => void;
     onHandleCancel?: () => void;
@@ -14,7 +14,6 @@ interface IHeaderFormProps {
 
 export default function HeaderTopForm({
     modeSave = false,
-    modeCancel = false,
     modeEdit = false,
     modeRemove = false,
     titleSection,
@@ -53,7 +52,7 @@ export default function HeaderTopForm({
                             Excluir
                         </Button>
                     )}
-                    {modeCancel && (
+                    {modeRemove && (
                         <Button
                             pattern="cancel"
                             onClick={onHandleCancel}
