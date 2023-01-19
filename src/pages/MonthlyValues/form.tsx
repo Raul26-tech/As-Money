@@ -82,11 +82,32 @@ export default function FormMonthlyValues() {
         }
     };
 
-    const onRemove = useCallback(() => {
+    const handleRemove = useCallback(() => {
         if (mode === 'read' || mode === 'insert') {
             navigate(-1);
         }
     }, [mode, navigate]);
+
+    const handleDelete = useCallback(() => {
+        setIsLoad(true);
+        api.delete(`${url}/form/${id}`)
+            .then(() => {
+                setIsLoad(false);
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Sucesso',
+                    text: 'Registro removido com sucesso',
+                });
+                navigate(`${url}/grid`);
+            })
+            .catch((e) => {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Erro',
+                    text: 'Erro ao deletar',
+                });
+            });
+    }, [id, navigate]);
 
     return (
         <Content>
@@ -103,8 +124,11 @@ export default function FormMonthlyValues() {
                     }
                     modeEdit={false}
                     modeCancel={true}
-                    modeRemove={false}
-                    onHandleCancel={onRemove}
+                    modeRemove={true}
+                    onHandleRemove={
+                        mode !== 'insert' ? handleDelete : handleDelete
+                    }
+                    onHandleCancel={handleRemove}
                 />
                 <div className="grid p-6 md:grid-cols-4 gap-x-3 gap-y-3">
                     <Input
