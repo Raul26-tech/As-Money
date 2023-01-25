@@ -63,14 +63,7 @@ export default function MonthlyValues() {
             </div>
             {transaction
                 .map(
-                    ({
-                        id,
-                        code,
-                        description,
-                        price,
-                        title,
-                        dateInclusion,
-                    }: ITransaction) => (
+                    ({ id, code, description, price, title }: ITransaction) => (
                         <div
                             key={id}
                             onClick={() => handleFormId(id)}
