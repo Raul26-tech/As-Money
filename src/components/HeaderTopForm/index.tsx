@@ -1,6 +1,7 @@
 import Button from '../Button';
 
 interface IHeaderFormProps {
+    modeDelete?: boolean;
     modeSave?: boolean;
     modeEdit?: boolean;
     modeCancel?: boolean;
@@ -13,6 +14,7 @@ interface IHeaderFormProps {
 }
 
 export default function HeaderTopForm({
+    modeDelete = false,
     modeSave = false,
     modeEdit = false,
     modeRemove = false,
@@ -43,7 +45,7 @@ export default function HeaderTopForm({
                             Editar
                         </Button>
                     )}
-                    {modeRemove && (
+                    {modeDelete && (
                         <Button
                             pattern="remove"
                             onClick={onHandleRemove}

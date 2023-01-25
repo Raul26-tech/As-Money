@@ -7,6 +7,7 @@ import Content from '../../components/Content';
 import HeaderTopForm from '../../components/HeaderTopForm';
 import { Input } from '../../components/Input';
 import { api } from '../../Services/api';
+import 'tippy.js/dist/tippy.css';
 import Swal from 'sweetalert2';
 
 const url = '/transactions';
@@ -63,16 +64,36 @@ export default function FormMonthlyValues() {
         submitData
     ) => {
         try {
-            setIsLoad(true);
-            await api.post(`${url}`, submitData);
-            setIsLoad(false);
-            Swal.fire({
-                icon: 'success',
-                title: 'Sucesso',
-                text: 'Inserção feita com sucesso',
-            });
-            setMode('read');
-            navigate(`${url}/form/${id}`);
+            if (mode === 'insert') {
+                setIsLoad(true);
+                await api.post(`${url}`, submitData);
+                setIsLoad(false);
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Sucesso',
+                    text: 'Inserção feita com sucesso',
+                });
+                setMode('read');
+                navigate(`${url}/form/${id}`);
+            } else if (mode === 'edit') {
+                setIsLoad(true);
+                await api.patch(`${url}/form/${id}`, submitData);
+                setIsLoad(false);
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Sucesso',
+                    text: 'Alteração feita com sucesso',
+                });
+                setMode('read');
+                navigate(`${url}/form/${id}`);
+            } else {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Sucesso',
+                    text: 'Exclução feita com sucesso',
+                });
+                navigate(`${url}/form/${id}`);
+            }
         } catch (error) {
             Swal.fire({
                 icon: 'error',
@@ -87,6 +108,10 @@ export default function FormMonthlyValues() {
             navigate(-1);
         }
     }, [mode, navigate]);
+
+    const handleFormEdit = useCallback(() => {
+        setMode('edit');
+    }, []);
 
     const handleDelete = useCallback(() => {
         setIsLoad(true);
@@ -122,13 +147,15 @@ export default function FormMonthlyValues() {
                         mode === 'edit' ||
                         mode === 'remove'
                     }
-                    modeEdit={false}
+                    modeDelete={mode !== 'insert' && mode !== 'edit'}
+                    modeEdit={mode !== 'insert' && mode !== 'edit'}
                     modeCancel={true}
                     modeRemove={true}
                     onHandleRemove={
                         mode !== 'insert' ? handleDelete : handleDelete
                     }
                     onHandleCancel={handleRemove}
+                    onHandleEdit={handleFormEdit}
                 />
                 <div className="grid p-6 md:grid-cols-4 gap-x-3 gap-y-3">
                     <Input
@@ -158,6 +185,7 @@ export default function FormMonthlyValues() {
                         addClassName="md:col-span-3"
                         disabled={mode !== 'insert' && mode !== 'edit'}
                     />
+
                     <Input
                         label="Valor da transação"
                         error={formState.errors.price}
