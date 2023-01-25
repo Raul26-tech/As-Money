@@ -15,64 +15,16 @@
   ],
   "transactions": [
     {
-      "code": "001",
-      "title": "Nova transação",
-      "description": "Testando inclusão",
+      "code": "0001",
+      "title": "Passeio no parque",
+      "description": "Passeio ao parque Iguatemi",
       "price": "150",
       "status": {
-        "prohibited": true,
-        "closed": false
+        "prohibited": false,
+        "closed": true
       },
-      "dateInclusion": "2022-11-02",
+      "dateInclusion": "2023-01-19",
       "id": 3
-    },
-    {
-      "code": "002",
-      "title": "Nova transação",
-      "description": "Teste",
-      "price": "150",
-      "status": {
-        "prohibited": false,
-        "closed": true
-      },
-      "dateInclusion": "2022-11-09",
-      "id": 4
-    },
-    {
-      "code": "0005",
-      "title": "Nova transação",
-      "description": "Teste",
-      "price": "20",
-      "status": {
-        "prohibited": true,
-        "closed": false
-      },
-      "dateInclusion": "2022-11-08",
-      "id": 5
-    },
-    {
-      "code": "005",
-      "title": "Teste",
-      "description": "Testando a inclusão",
-      "price": "500",
-      "status": {
-        "prohibited": false,
-        "closed": true
-      },
-      "dateInclusion": "2022-11-09",
-      "id": 6
-    },
-    {
-      "code": "007",
-      "title": "Inclusão de transação",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis finibus lorem non scelerisque lobortis. Vestibulum vitae nunc ac nisi rutrum scelerisque. Praesent tempor turpis sit amet sapien tristique accumsan. Aliquam erat volutpat. Integer in malesuada purus, nec venenatis nisl. In metus felis, fermentum at felis sed, malesuada molestie erat. Morbi eu orci blandit, fermentum est a, faucibus tellus. In at nibh urna.",
-      "price": "25",
-      "status": {
-        "prohibited": false,
-        "closed": true
-      },
-      "dateInclusion": "2022-11-07",
-      "id": 8
     }
   ]
 }
